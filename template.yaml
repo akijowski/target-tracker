@@ -1,0 +1,175 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  Target Tracker
+
+  It's crazy tough to get baby formula right now.
+  Let's automate checking Target for product.
+
+Globals:
+  Function:
+    Runtime: go1.x
+    Architectures:
+      - x86_64
+    Timeout: 5
+    Tracing: Active
+    AutoPublishAlias: Live
+    Tags:
+      Project: !Ref 'AWS::StackName'
+
+Resources:
+  TargetTrackerStateMachine:
+    Type: AWS::Serverless::StateMachine
+    Properties:
+      Name: !Sub '${AWS::StackName}'
+      DefinitionUri: statemachine/target-tracker.asl.json
+      DefinitionSubstitutions:
+        AlertTopicArn: !Ref ProductAlertTopic
+        MessageFormatterFunction: !Ref MessageFormatterFunction
+        ProductCheckerFunction: !Ref ProductCheckerFunction
+        ResultsTableName: !Ref ResultsTable
+      Events:
+        HourlySchedule:
+          Type: Schedule
+          Properties:
+            Enabled: true
+            Name: !Sub '${AWS::StackName}-HourlyQuery'
+            Description: Trigger the Target Tracker state machine every hour
+            Schedule: "rate(1 hour)"
+            Input: |
+              {
+                "products": [
+                  {
+                    "name": "Up&Up Gentle Baby Formula",
+                    "tcin": "70000042",
+                    "desired_quantity": 1,
+                    "product_url": "https://www.target.com/p/gentle-non-gmo-powder-infant-formula-up-up/-/A-82052064"
+                  },
+                  {
+                    "name": "Up&Up Baby Formula",
+                    "tcin": "70000044",
+                    "desired_quantity": 1,
+                    "product_url": "https://www.target.com/p/powder-infant-formula-up-up/-/A-82052061"
+                  },
+                  {
+                    "name": "Up&Up Advantage Baby Formula",
+                    "tcin": "70000043",
+                    "desired_quantity": 1,
+                    "product_url": "https://www.target.com/p/advantage-powder-infant-formula-up-up/-/A-82052069"
+                  },
+                  {
+                    "name": "Up&Up Sensitive Baby Formula",
+                    "tcin": "70000046",
+                    "desired_quantity": 1,
+                    "product_url": "https://www.target.com/p/sensitivity-non-gmo-powder-infant-formula-up-up/-/A-82052068"
+                  },
+                  {
+                    "name": "Enfamil NeuroPro Gentlease",
+                    "tcin": "79334027",
+                    "desired_quantity": 1,
+                    "product_url": "https://www.target.com/p/enfamil-neuropro-gentlease-non-gmo-powder-infant-formula/-/A-81640508"
+                  }
+                ]
+              }
+      Policies:
+        - LambdaInvokePolicy:
+            FunctionName: !Ref ProductCheckerFunction
+        - LambdaInvokePolicy:
+            FunctionName: !Ref MessageFormatterFunction
+        - DynamoDBWritePolicy:
+            TableName: !Ref ResultsTable
+        - SNSPublishMessagePolicy:
+            TopicName: !GetAtt ProductAlertTopic.TopicName
+      Tracing:
+        Enabled: true
+      Type: EXPRESS
+      Tags:
+        Project: !Ref 'AWS::StackName'
+
+  ProductCheckerFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: !Sub '${AWS::StackName}-product-checker'
+      Description: Query the Target API for product availability
+      CodeUri: functions/productChecker/
+      Handler: productChecker
+      Environment:
+        Variables:
+          API_URI: 'https://redsky.target.com'
+  ProductCheckerLogGroup:
+    Type: AWS::Logs::LogGroup
+    Properties:
+      LogGroupName: !Sub '/aws/lambda/${AWS::StackName}-product-checker'
+      RetentionInDays: 7
+      Tags:
+      - Key: Project
+        Value: !Ref 'AWS::StackName'
+
+  MessageFormatterFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: !Sub '${AWS::StackName}-message-formatter'
+      Description: Format a message about product availability to be sent out to SNS
+      CodeUri: functions/messageFormatter/
+      Handler: messageFormatter
+  MessageFormatterLogGroup:
+    Type: AWS::Logs::LogGroup
+    Properties:
+      LogGroupName: !Sub '/aws/lambda/${AWS::StackName}-message-formatter'
+      RetentionInDays: 7
+      Tags:
+      - Key: Project
+        Value: !Ref 'AWS::StackName'
+
+  ResultsTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: !Sub '${AWS::StackName}-results'
+      KeySchema:
+        - AttributeName: PK
+          KeyType: HASH
+        - AttributeName: SK
+          KeyType: RANGE
+      AttributeDefinitions:
+        - AttributeName: PK
+          AttributeType: S
+        - AttributeName: SK
+          AttributeType: S
+      BillingMode: PAY_PER_REQUEST
+      TimeToLiveSpecification:
+        AttributeName: TTL
+        Enabled: true
+      Tags:
+        - Key: Project
+          Value: !Ref 'AWS::StackName'
+
+  ProductAlertTopic:
+    Type: AWS::SNS::Topic
+    Properties:
+      DisplayName: Target Product Available
+      TopicName: !Sub '${AWS::StackName}-product-alert'
+      Subscription:
+        - Endpoint: '{{resolve:ssm:TargetTrackerEmail1:1}}'
+          Protocol: email
+        - Endpoint: '{{resolve:ssm:TargetTrackerEmail2:1}}'
+          Protocol: email
+      Tags:
+        - Key: Project
+          Value: !Ref 'AWS::StackName'
+
+Outputs:
+  TargetTrackerStateMachineArn:
+    Description: "Target Tracker State Machine ARN"
+    Value: !Ref TargetTrackerStateMachine
+  ProductCheckerFunctionArn:
+    Description: "Product Checker Lambda Function ARN"
+    Value: !GetAtt ProductCheckerFunction.Arn
+  MessageFormatterFunctionArn:
+    Description: "Message Formatter Lambda Function ARN"
+    Value: !GetAtt MessageFormatterFunction.Arn
+  ProductAlertTopicArn:
+    Description: "Product Alert SNS Topic ARN"
+    Value: !Ref ProductAlertTopic
+  ResultsTableArn:
+    Description: "Results Table ARN"
+    Value: !GetAtt ResultsTable.Arn

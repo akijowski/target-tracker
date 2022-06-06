@@ -1,0 +1,3788 @@
+{
+    "data": {
+        "fulfillment_fiats": {
+            "product_id": "79334027",
+            "product": {
+                "__typename": "Product",
+                "tcin": "79334027",
+                "item": {
+                    "dpci": "007-09-1151",
+                    "relationship_type_code": "VC"
+                },
+                "parent": {
+                    "__typename": "Product",
+                    "tcin": "81640508",
+                    "item": {
+                        "relationship_type_code": "VAP"
+                    }
+                }
+            },
+            "buy_unit_of_measure": "EACH",
+            "availability_unit_of_measure": "EACH",
+            "available_to_purchase_date_time": "1970-01-01T00:00:00.000Z",
+            "street_date": "1970-01-01T00:00:00.000Z",
+            "locations": [
+                {
+                    "location_id": "2219",
+                    "location_available_to_promise_quantity": 0,
+                    "distance": 0.22,
+                    "order_pickup": {
+                        "availability_status": "NOT_SOLD_IN_STORE"
+                    },
+                    "in_store_only": {
+                        "availability_status": "NOT_SOLD_IN_STORE"
+                    },
+                    "ship_to_store": {
+                        "availability_status": "UNAVAILABLE"
+                    },
+                    "curbside": {
+                        "availability_status": "NOT_SOLD_IN_STORE"
+                    },
+                    "store": {
+                        "store_id": "2219",
+                        "main_voice_phone_number": "303-209-0166",
+                        "location_name": "Parker",
+                        "mailing_address": {
+                            "address_line1": "11150 S Twenty Mile Rd",
+                            "city": "Parker",
+                            "postal_code": "80134-4952",
+                            "state": "Colorado"
+                        },
+                        "rolling_operating_hours": {
+                            "main_hours": {
+                                "days": [
+                                    {
+                                        "date": "2022-05-27",
+                                        "day_name": "Friday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "07:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-05-28",
+                                        "day_name": "Saturday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "07:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-05-29",
+                                        "day_name": "Sunday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "07:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-05-30",
+                                        "day_name": "Monday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "07:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-05-31",
+                                        "day_name": "Tuesday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "07:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-01",
+                                        "day_name": "Wednesday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "07:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-02",
+                                        "day_name": "Thursday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "07:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-03",
+                                        "day_name": "Friday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "07:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-04",
+                                        "day_name": "Saturday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "07:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-05",
+                                        "day_name": "Sunday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "07:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-06",
+                                        "day_name": "Monday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "07:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-07",
+                                        "day_name": "Tuesday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "07:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-08",
+                                        "day_name": "Wednesday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "07:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-09",
+                                        "day_name": "Thursday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "07:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                {
+                    "location_id": "1976",
+                    "location_available_to_promise_quantity": 0,
+                    "distance": 5.38,
+                    "order_pickup": {
+                        "availability_status": "NOT_SOLD_IN_STORE"
+                    },
+                    "in_store_only": {
+                        "availability_status": "NOT_SOLD_IN_STORE"
+                    },
+                    "ship_to_store": {
+                        "availability_status": "UNAVAILABLE"
+                    },
+                    "curbside": {
+                        "availability_status": "NOT_SOLD_IN_STORE"
+                    },
+                    "store": {
+                        "store_id": "1976",
+                        "main_voice_phone_number": "303-209-2827",
+                        "location_name": "Aurora Saddle Rock",
+                        "mailing_address": {
+                            "address_line1": "7400 S Gartrell Rd",
+                            "city": "Aurora",
+                            "postal_code": "80016-4236",
+                            "state": "Colorado"
+                        },
+                        "rolling_operating_hours": {
+                            "main_hours": {
+                                "days": [
+                                    {
+                                        "date": "2022-05-27",
+                                        "day_name": "Friday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "07:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-05-28",
+                                        "day_name": "Saturday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "07:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-05-29",
+                                        "day_name": "Sunday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "07:00:00",
+                                                "end_time": "21:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-05-30",
+                                        "day_name": "Monday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "07:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-05-31",
+                                        "day_name": "Tuesday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "07:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-01",
+                                        "day_name": "Wednesday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "07:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-02",
+                                        "day_name": "Thursday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "07:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-03",
+                                        "day_name": "Friday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "07:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-04",
+                                        "day_name": "Saturday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "07:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-05",
+                                        "day_name": "Sunday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "07:00:00",
+                                                "end_time": "21:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-06",
+                                        "day_name": "Monday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "07:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-07",
+                                        "day_name": "Tuesday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "07:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-08",
+                                        "day_name": "Wednesday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "07:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-09",
+                                        "day_name": "Thursday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "07:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                {
+                    "location_id": "2458",
+                    "location_available_to_promise_quantity": 0,
+                    "distance": 5.53,
+                    "order_pickup": {
+                        "availability_status": "NOT_SOLD_IN_STORE"
+                    },
+                    "in_store_only": {
+                        "availability_status": "NOT_SOLD_IN_STORE"
+                    },
+                    "ship_to_store": {
+                        "availability_status": "UNAVAILABLE"
+                    },
+                    "curbside": {
+                        "availability_status": "NOT_SOLD_IN_STORE"
+                    },
+                    "store": {
+                        "store_id": "2458",
+                        "main_voice_phone_number": "720-214-6000",
+                        "location_name": "Aurora South",
+                        "mailing_address": {
+                            "address_line1": "15700 E Briarwood Cir",
+                            "city": "Aurora",
+                            "postal_code": "80016-1558",
+                            "state": "Colorado"
+                        },
+                        "rolling_operating_hours": {
+                            "main_hours": {
+                                "days": [
+                                    {
+                                        "date": "2022-05-27",
+                                        "day_name": "Friday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "08:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-05-28",
+                                        "day_name": "Saturday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "08:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-05-29",
+                                        "day_name": "Sunday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "08:00:00",
+                                                "end_time": "21:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-05-30",
+                                        "day_name": "Monday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "08:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-05-31",
+                                        "day_name": "Tuesday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "08:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-01",
+                                        "day_name": "Wednesday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "08:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-02",
+                                        "day_name": "Thursday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "08:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-03",
+                                        "day_name": "Friday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "08:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-04",
+                                        "day_name": "Saturday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "08:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-05",
+                                        "day_name": "Sunday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "08:00:00",
+                                                "end_time": "21:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-06",
+                                        "day_name": "Monday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "08:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-07",
+                                        "day_name": "Tuesday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "08:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-08",
+                                        "day_name": "Wednesday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "08:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-09",
+                                        "day_name": "Thursday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "08:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                {
+                    "location_id": "2023",
+                    "location_available_to_promise_quantity": 0,
+                    "distance": 5.97,
+                    "order_pickup": {
+                        "availability_status": "NOT_SOLD_IN_STORE"
+                    },
+                    "in_store_only": {
+                        "availability_status": "NOT_SOLD_IN_STORE"
+                    },
+                    "ship_to_store": {
+                        "availability_status": "UNAVAILABLE"
+                    },
+                    "curbside": {
+                        "availability_status": "NOT_SOLD_IN_STORE"
+                    },
+                    "store": {
+                        "store_id": "2023",
+                        "main_voice_phone_number": "303-209-1851",
+                        "location_name": "Lone Tree",
+                        "mailing_address": {
+                            "address_line1": "10001 Commons St",
+                            "city": "Lone Tree",
+                            "postal_code": "80124-5547",
+                            "state": "Colorado"
+                        },
+                        "rolling_operating_hours": {
+                            "main_hours": {
+                                "days": [
+                                    {
+                                        "date": "2022-05-27",
+                                        "day_name": "Friday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "07:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-05-28",
+                                        "day_name": "Saturday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "07:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-05-29",
+                                        "day_name": "Sunday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "07:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-05-30",
+                                        "day_name": "Monday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "07:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-05-31",
+                                        "day_name": "Tuesday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "07:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-01",
+                                        "day_name": "Wednesday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "07:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-02",
+                                        "day_name": "Thursday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "07:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-03",
+                                        "day_name": "Friday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "07:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-04",
+                                        "day_name": "Saturday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "07:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-05",
+                                        "day_name": "Sunday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "07:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-06",
+                                        "day_name": "Monday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "07:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-07",
+                                        "day_name": "Tuesday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "07:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-08",
+                                        "day_name": "Wednesday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "07:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-09",
+                                        "day_name": "Thursday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "07:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                {
+                    "location_id": "147",
+                    "location_available_to_promise_quantity": 0,
+                    "distance": 7.84,
+                    "order_pickup": {
+                        "availability_status": "NOT_SOLD_IN_STORE"
+                    },
+                    "in_store_only": {
+                        "availability_status": "NOT_SOLD_IN_STORE"
+                    },
+                    "ship_to_store": {
+                        "availability_status": "UNAVAILABLE"
+                    },
+                    "curbside": {
+                        "availability_status": "NOT_SOLD_IN_STORE"
+                    },
+                    "store": {
+                        "store_id": "147",
+                        "main_voice_phone_number": "303-790-2583",
+                        "location_name": "Arapahoe",
+                        "mailing_address": {
+                            "address_line1": "6767 S Clinton St",
+                            "city": "Englewood",
+                            "postal_code": "80112-3617",
+                            "state": "Colorado"
+                        },
+                        "rolling_operating_hours": {
+                            "main_hours": {
+                                "days": [
+                                    {
+                                        "date": "2022-05-27",
+                                        "day_name": "Friday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "08:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-05-28",
+                                        "day_name": "Saturday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "08:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-05-29",
+                                        "day_name": "Sunday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "08:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-05-30",
+                                        "day_name": "Monday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "08:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-05-31",
+                                        "day_name": "Tuesday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "08:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-01",
+                                        "day_name": "Wednesday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "08:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-02",
+                                        "day_name": "Thursday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "08:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-03",
+                                        "day_name": "Friday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "08:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-04",
+                                        "day_name": "Saturday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "08:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-05",
+                                        "day_name": "Sunday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "08:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-06",
+                                        "day_name": "Monday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "08:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-07",
+                                        "day_name": "Tuesday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "08:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-08",
+                                        "day_name": "Wednesday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "08:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-09",
+                                        "day_name": "Thursday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "08:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                {
+                    "location_id": "256",
+                    "location_available_to_promise_quantity": 0,
+                    "distance": 8.42,
+                    "order_pickup": {
+                        "availability_status": "OUT_OF_STOCK"
+                    },
+                    "in_store_only": {
+                        "availability_status": "OUT_OF_STOCK"
+                    },
+                    "ship_to_store": {
+                        "availability_status": "UNAVAILABLE"
+                    },
+                    "curbside": {
+                        "availability_status": "OUT_OF_STOCK"
+                    },
+                    "store": {
+                        "store_id": "256",
+                        "main_voice_phone_number": "303-699-1020",
+                        "location_name": "Aurora SE",
+                        "mailing_address": {
+                            "address_line1": "16910 E Quincy Ave",
+                            "city": "Aurora",
+                            "postal_code": "80015-2745",
+                            "state": "Colorado"
+                        },
+                        "rolling_operating_hours": {
+                            "main_hours": {
+                                "days": [
+                                    {
+                                        "date": "2022-05-27",
+                                        "day_name": "Friday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "08:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-05-28",
+                                        "day_name": "Saturday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "08:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-05-29",
+                                        "day_name": "Sunday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "08:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-05-30",
+                                        "day_name": "Monday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "08:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-05-31",
+                                        "day_name": "Tuesday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "08:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-01",
+                                        "day_name": "Wednesday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "08:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-02",
+                                        "day_name": "Thursday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "08:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-03",
+                                        "day_name": "Friday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "08:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-04",
+                                        "day_name": "Saturday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "08:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-05",
+                                        "day_name": "Sunday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "08:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-06",
+                                        "day_name": "Monday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "08:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-07",
+                                        "day_name": "Tuesday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "08:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-08",
+                                        "day_name": "Wednesday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "08:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-09",
+                                        "day_name": "Thursday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "08:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                {
+                    "location_id": "1326",
+                    "location_available_to_promise_quantity": 0,
+                    "distance": 8.6,
+                    "order_pickup": {
+                        "availability_status": "OUT_OF_STOCK"
+                    },
+                    "in_store_only": {
+                        "availability_status": "OUT_OF_STOCK"
+                    },
+                    "ship_to_store": {
+                        "availability_status": "UNAVAILABLE"
+                    },
+                    "curbside": {
+                        "availability_status": "OUT_OF_STOCK"
+                    },
+                    "store": {
+                        "store_id": "1326",
+                        "main_voice_phone_number": "303-663-4322",
+                        "location_name": "Castle Rock",
+                        "mailing_address": {
+                            "address_line1": "5010 Founders Pkwy",
+                            "city": "Castle Rock",
+                            "postal_code": "80108-7838",
+                            "state": "Colorado"
+                        },
+                        "rolling_operating_hours": {
+                            "main_hours": {
+                                "days": [
+                                    {
+                                        "date": "2022-05-27",
+                                        "day_name": "Friday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "08:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-05-28",
+                                        "day_name": "Saturday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "08:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-05-29",
+                                        "day_name": "Sunday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "08:00:00",
+                                                "end_time": "21:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-05-30",
+                                        "day_name": "Monday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "08:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-05-31",
+                                        "day_name": "Tuesday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "08:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-01",
+                                        "day_name": "Wednesday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "08:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-02",
+                                        "day_name": "Thursday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "08:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-03",
+                                        "day_name": "Friday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "08:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-04",
+                                        "day_name": "Saturday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "08:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-05",
+                                        "day_name": "Sunday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "08:00:00",
+                                                "end_time": "21:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-06",
+                                        "day_name": "Monday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "08:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-07",
+                                        "day_name": "Tuesday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "08:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-08",
+                                        "day_name": "Wednesday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "08:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-09",
+                                        "day_name": "Thursday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "08:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                {
+                    "location_id": "271",
+                    "location_available_to_promise_quantity": 0,
+                    "distance": 10.74,
+                    "order_pickup": {
+                        "availability_status": "NOT_SOLD_IN_STORE"
+                    },
+                    "in_store_only": {
+                        "availability_status": "NOT_SOLD_IN_STORE"
+                    },
+                    "ship_to_store": {
+                        "availability_status": "UNAVAILABLE"
+                    },
+                    "curbside": {
+                        "availability_status": "NOT_SOLD_IN_STORE"
+                    },
+                    "store": {
+                        "store_id": "271",
+                        "main_voice_phone_number": "303-797-1911",
+                        "location_name": "Douglas County",
+                        "mailing_address": {
+                            "address_line1": "1950 E County Line Rd",
+                            "city": "Highlands Ranch",
+                            "postal_code": "80126-2437",
+                            "state": "Colorado"
+                        },
+                        "rolling_operating_hours": {
+                            "main_hours": {
+                                "days": [
+                                    {
+                                        "date": "2022-05-27",
+                                        "day_name": "Friday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "08:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-05-28",
+                                        "day_name": "Saturday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "08:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-05-29",
+                                        "day_name": "Sunday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "08:00:00",
+                                                "end_time": "21:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-05-30",
+                                        "day_name": "Monday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "08:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-05-31",
+                                        "day_name": "Tuesday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "08:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-01",
+                                        "day_name": "Wednesday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "08:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-02",
+                                        "day_name": "Thursday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "08:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-03",
+                                        "day_name": "Friday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "08:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-04",
+                                        "day_name": "Saturday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "08:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-05",
+                                        "day_name": "Sunday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "08:00:00",
+                                                "end_time": "21:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-06",
+                                        "day_name": "Monday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "08:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-07",
+                                        "day_name": "Tuesday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "08:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-08",
+                                        "day_name": "Wednesday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "08:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-09",
+                                        "day_name": "Thursday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "08:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                {
+                    "location_id": "2820",
+                    "location_available_to_promise_quantity": 0,
+                    "distance": 11.76,
+                    "order_pickup": {
+                        "availability_status": "NOT_SOLD_IN_STORE"
+                    },
+                    "in_store_only": {
+                        "availability_status": "NOT_SOLD_IN_STORE"
+                    },
+                    "ship_to_store": {
+                        "availability_status": "UNAVAILABLE"
+                    },
+                    "curbside": {
+                        "availability_status": "NOT_SOLD_IN_STORE"
+                    },
+                    "store": {
+                        "store_id": "2820",
+                        "main_voice_phone_number": "303-481-2821",
+                        "location_name": "Denver SE",
+                        "mailing_address": {
+                            "address_line1": "7777 E Hampden Ave",
+                            "city": "Denver",
+                            "postal_code": "80231-4806",
+                            "state": "Colorado"
+                        },
+                        "rolling_operating_hours": {
+                            "main_hours": {
+                                "days": [
+                                    {
+                                        "date": "2022-05-27",
+                                        "day_name": "Friday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "08:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-05-28",
+                                        "day_name": "Saturday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "08:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-05-29",
+                                        "day_name": "Sunday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "08:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-05-30",
+                                        "day_name": "Monday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "08:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-05-31",
+                                        "day_name": "Tuesday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "08:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-01",
+                                        "day_name": "Wednesday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "08:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-02",
+                                        "day_name": "Thursday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "08:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-03",
+                                        "day_name": "Friday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "08:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-04",
+                                        "day_name": "Saturday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "08:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-05",
+                                        "day_name": "Sunday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "08:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-06",
+                                        "day_name": "Monday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "08:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-07",
+                                        "day_name": "Tuesday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "08:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-08",
+                                        "day_name": "Wednesday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "08:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-09",
+                                        "day_name": "Thursday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "08:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                {
+                    "location_id": "2716",
+                    "location_available_to_promise_quantity": 0,
+                    "distance": 12.51,
+                    "order_pickup": {
+                        "availability_status": "NOT_SOLD_IN_STORE"
+                    },
+                    "in_store_only": {
+                        "availability_status": "NOT_SOLD_IN_STORE"
+                    },
+                    "ship_to_store": {
+                        "availability_status": "UNAVAILABLE"
+                    },
+                    "curbside": {
+                        "availability_status": "NOT_SOLD_IN_STORE"
+                    },
+                    "store": {
+                        "store_id": "2716",
+                        "main_voice_phone_number": "303-323-4971",
+                        "location_name": "Highlands Ranch",
+                        "mailing_address": {
+                            "address_line1": "1265 Sgt Jon Stiles Dr",
+                            "city": "Highlands Ranch",
+                            "postal_code": "80129-2265",
+                            "state": "Colorado"
+                        },
+                        "rolling_operating_hours": {
+                            "main_hours": {
+                                "days": [
+                                    {
+                                        "date": "2022-05-27",
+                                        "day_name": "Friday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "07:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-05-28",
+                                        "day_name": "Saturday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "07:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-05-29",
+                                        "day_name": "Sunday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "07:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-05-30",
+                                        "day_name": "Monday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "07:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-05-31",
+                                        "day_name": "Tuesday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "07:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-01",
+                                        "day_name": "Wednesday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "07:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-02",
+                                        "day_name": "Thursday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "07:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-03",
+                                        "day_name": "Friday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "07:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-04",
+                                        "day_name": "Saturday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "07:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-05",
+                                        "day_name": "Sunday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "07:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-06",
+                                        "day_name": "Monday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "07:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-07",
+                                        "day_name": "Tuesday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "07:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-08",
+                                        "day_name": "Wednesday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "07:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-09",
+                                        "day_name": "Thursday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "07:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                {
+                    "location_id": "1413",
+                    "location_available_to_promise_quantity": 0,
+                    "distance": 13.06,
+                    "order_pickup": {
+                        "availability_status": "OUT_OF_STOCK"
+                    },
+                    "in_store_only": {
+                        "availability_status": "OUT_OF_STOCK"
+                    },
+                    "ship_to_store": {
+                        "availability_status": "UNAVAILABLE"
+                    },
+                    "curbside": {
+                        "availability_status": "OUT_OF_STOCK"
+                    },
+                    "store": {
+                        "store_id": "1413",
+                        "main_voice_phone_number": "303-755-8530",
+                        "location_name": "Aurora West",
+                        "mailing_address": {
+                            "address_line1": "1400 S Havana St",
+                            "city": "Aurora",
+                            "postal_code": "80012-4014",
+                            "state": "Colorado"
+                        },
+                        "rolling_operating_hours": {
+                            "main_hours": {
+                                "days": [
+                                    {
+                                        "date": "2022-05-27",
+                                        "day_name": "Friday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "08:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-05-28",
+                                        "day_name": "Saturday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "08:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-05-29",
+                                        "day_name": "Sunday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "08:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-05-30",
+                                        "day_name": "Monday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "08:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-05-31",
+                                        "day_name": "Tuesday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "08:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-01",
+                                        "day_name": "Wednesday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "08:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-02",
+                                        "day_name": "Thursday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "08:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-03",
+                                        "day_name": "Friday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "08:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-04",
+                                        "day_name": "Saturday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "08:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-05",
+                                        "day_name": "Sunday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "08:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-06",
+                                        "day_name": "Monday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "08:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-07",
+                                        "day_name": "Tuesday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "08:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-08",
+                                        "day_name": "Wednesday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "08:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-09",
+                                        "day_name": "Thursday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "08:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                {
+                    "location_id": "3386",
+                    "location_available_to_promise_quantity": 0,
+                    "distance": 13.86,
+                    "order_pickup": {
+                        "availability_status": "OUT_OF_STOCK"
+                    },
+                    "in_store_only": {
+                        "availability_status": "OUT_OF_STOCK"
+                    },
+                    "ship_to_store": {
+                        "availability_status": "UNAVAILABLE"
+                    },
+                    "curbside": {
+                        "availability_status": "OUT_OF_STOCK"
+                    },
+                    "store": {
+                        "store_id": "3386",
+                        "main_voice_phone_number": "303-218-5745",
+                        "location_name": "Denver University Hills Plaza",
+                        "mailing_address": {
+                            "address_line1": "2490 S. Colorado Blvd",
+                            "city": "Denver",
+                            "postal_code": "80222-5907",
+                            "state": "Colorado"
+                        },
+                        "rolling_operating_hours": {
+                            "main_hours": {
+                                "days": [
+                                    {
+                                        "date": "2022-05-27",
+                                        "day_name": "Friday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "07:00:00",
+                                                "end_time": "21:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-05-28",
+                                        "day_name": "Saturday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "08:00:00",
+                                                "end_time": "21:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-05-29",
+                                        "day_name": "Sunday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "08:00:00",
+                                                "end_time": "21:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-05-30",
+                                        "day_name": "Monday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "07:00:00",
+                                                "end_time": "21:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-05-31",
+                                        "day_name": "Tuesday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "07:00:00",
+                                                "end_time": "21:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-01",
+                                        "day_name": "Wednesday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "07:00:00",
+                                                "end_time": "21:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-02",
+                                        "day_name": "Thursday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "07:00:00",
+                                                "end_time": "21:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-03",
+                                        "day_name": "Friday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "07:00:00",
+                                                "end_time": "21:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-04",
+                                        "day_name": "Saturday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "08:00:00",
+                                                "end_time": "21:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-05",
+                                        "day_name": "Sunday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "08:00:00",
+                                                "end_time": "21:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-06",
+                                        "day_name": "Monday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "07:00:00",
+                                                "end_time": "21:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-07",
+                                        "day_name": "Tuesday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "07:00:00",
+                                                "end_time": "21:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-08",
+                                        "day_name": "Wednesday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "07:00:00",
+                                                "end_time": "21:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-09",
+                                        "day_name": "Thursday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "07:00:00",
+                                                "end_time": "21:00:00"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                {
+                    "location_id": "1471",
+                    "location_available_to_promise_quantity": 0,
+                    "distance": 14.04,
+                    "order_pickup": {
+                        "availability_status": "OUT_OF_STOCK"
+                    },
+                    "in_store_only": {
+                        "availability_status": "OUT_OF_STOCK"
+                    },
+                    "ship_to_store": {
+                        "availability_status": "UNAVAILABLE"
+                    },
+                    "curbside": {
+                        "availability_status": "OUT_OF_STOCK"
+                    },
+                    "store": {
+                        "store_id": "1471",
+                        "main_voice_phone_number": "303-214-0114",
+                        "location_name": "Aurora",
+                        "mailing_address": {
+                            "address_line1": "14200 E Ellsworth Ave",
+                            "city": "Aurora",
+                            "postal_code": "80012-1402",
+                            "state": "Colorado"
+                        },
+                        "rolling_operating_hours": {
+                            "main_hours": {
+                                "days": [
+                                    {
+                                        "date": "2022-05-27",
+                                        "day_name": "Friday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "07:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-05-28",
+                                        "day_name": "Saturday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "07:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-05-29",
+                                        "day_name": "Sunday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "07:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-05-30",
+                                        "day_name": "Monday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "07:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-05-31",
+                                        "day_name": "Tuesday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "07:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-01",
+                                        "day_name": "Wednesday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "07:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-02",
+                                        "day_name": "Thursday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "07:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-03",
+                                        "day_name": "Friday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "07:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-04",
+                                        "day_name": "Saturday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "07:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-05",
+                                        "day_name": "Sunday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "07:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-06",
+                                        "day_name": "Monday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "07:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-07",
+                                        "day_name": "Tuesday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "07:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-08",
+                                        "day_name": "Wednesday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "07:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-09",
+                                        "day_name": "Thursday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "07:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                {
+                    "location_id": "2261",
+                    "location_available_to_promise_quantity": 0,
+                    "distance": 15.42,
+                    "order_pickup": {
+                        "availability_status": "OUT_OF_STOCK"
+                    },
+                    "in_store_only": {
+                        "availability_status": "OUT_OF_STOCK"
+                    },
+                    "ship_to_store": {
+                        "availability_status": "UNAVAILABLE"
+                    },
+                    "curbside": {
+                        "availability_status": "OUT_OF_STOCK"
+                    },
+                    "store": {
+                        "store_id": "2261",
+                        "main_voice_phone_number": "303-974-6661",
+                        "location_name": "Sheridan",
+                        "mailing_address": {
+                            "address_line1": "3650 River Point Pkwy",
+                            "city": "Sheridan",
+                            "postal_code": "80110-3312",
+                            "state": "Colorado"
+                        },
+                        "rolling_operating_hours": {
+                            "main_hours": {
+                                "days": [
+                                    {
+                                        "date": "2022-05-27",
+                                        "day_name": "Friday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "07:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-05-28",
+                                        "day_name": "Saturday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "07:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-05-29",
+                                        "day_name": "Sunday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "07:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-05-30",
+                                        "day_name": "Monday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "07:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-05-31",
+                                        "day_name": "Tuesday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "07:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-01",
+                                        "day_name": "Wednesday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "07:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-02",
+                                        "day_name": "Thursday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "07:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-03",
+                                        "day_name": "Friday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "07:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-04",
+                                        "day_name": "Saturday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "07:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-05",
+                                        "day_name": "Sunday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "07:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-06",
+                                        "day_name": "Monday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "07:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-07",
+                                        "day_name": "Tuesday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "07:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-08",
+                                        "day_name": "Wednesday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "07:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-09",
+                                        "day_name": "Thursday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "07:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                {
+                    "location_id": "3403",
+                    "location_available_to_promise_quantity": 0,
+                    "distance": 15.57,
+                    "order_pickup": {
+                        "availability_status": "OUT_OF_STOCK"
+                    },
+                    "in_store_only": {
+                        "availability_status": "OUT_OF_STOCK"
+                    },
+                    "ship_to_store": {
+                        "availability_status": "UNAVAILABLE"
+                    },
+                    "curbside": {
+                        "availability_status": "OUT_OF_STOCK"
+                    },
+                    "store": {
+                        "store_id": "3403",
+                        "main_voice_phone_number": "303-218-5430",
+                        "location_name": "Denver Lowry",
+                        "mailing_address": {
+                            "address_line1": "93 N Quebec St",
+                            "city": "Denver",
+                            "postal_code": "80230",
+                            "state": "Colorado"
+                        },
+                        "rolling_operating_hours": {
+                            "main_hours": {
+                                "days": [
+                                    {
+                                        "date": "2022-05-27",
+                                        "day_name": "Friday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "08:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-05-28",
+                                        "day_name": "Saturday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "08:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-05-29",
+                                        "day_name": "Sunday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "08:00:00",
+                                                "end_time": "21:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-05-30",
+                                        "day_name": "Monday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "08:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-05-31",
+                                        "day_name": "Tuesday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "08:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-01",
+                                        "day_name": "Wednesday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "08:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-02",
+                                        "day_name": "Thursday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "08:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-03",
+                                        "day_name": "Friday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "08:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-04",
+                                        "day_name": "Saturday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "08:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-05",
+                                        "day_name": "Sunday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "08:00:00",
+                                                "end_time": "21:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-06",
+                                        "day_name": "Monday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "08:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-07",
+                                        "day_name": "Tuesday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "08:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-08",
+                                        "day_name": "Wednesday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "08:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-09",
+                                        "day_name": "Thursday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "08:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                {
+                    "location_id": "1806",
+                    "location_available_to_promise_quantity": 0,
+                    "distance": 15.9,
+                    "order_pickup": {
+                        "availability_status": "NOT_SOLD_IN_STORE"
+                    },
+                    "in_store_only": {
+                        "availability_status": "NOT_SOLD_IN_STORE"
+                    },
+                    "ship_to_store": {
+                        "availability_status": "UNAVAILABLE"
+                    },
+                    "curbside": {
+                        "availability_status": "NOT_SOLD_IN_STORE"
+                    },
+                    "store": {
+                        "store_id": "1806",
+                        "main_voice_phone_number": "303-209-0182",
+                        "location_name": "Glendale",
+                        "mailing_address": {
+                            "address_line1": "4301 E Virginia Ave",
+                            "city": "Glendale",
+                            "postal_code": "80246-1510",
+                            "state": "Colorado"
+                        },
+                        "rolling_operating_hours": {
+                            "main_hours": {
+                                "days": [
+                                    {
+                                        "date": "2022-05-27",
+                                        "day_name": "Friday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "07:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-05-28",
+                                        "day_name": "Saturday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "07:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-05-29",
+                                        "day_name": "Sunday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "07:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-05-30",
+                                        "day_name": "Monday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "07:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-05-31",
+                                        "day_name": "Tuesday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "07:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-01",
+                                        "day_name": "Wednesday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "07:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-02",
+                                        "day_name": "Thursday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "07:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-03",
+                                        "day_name": "Friday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "07:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-04",
+                                        "day_name": "Saturday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "07:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-05",
+                                        "day_name": "Sunday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "07:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-06",
+                                        "day_name": "Monday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "07:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-07",
+                                        "day_name": "Tuesday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "07:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-08",
+                                        "day_name": "Wednesday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "07:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-09",
+                                        "day_name": "Thursday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "07:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                {
+                    "location_id": "1776",
+                    "location_available_to_promise_quantity": 0,
+                    "distance": 18.58,
+                    "order_pickup": {
+                        "availability_status": "NOT_SOLD_IN_STORE"
+                    },
+                    "in_store_only": {
+                        "availability_status": "NOT_SOLD_IN_STORE"
+                    },
+                    "ship_to_store": {
+                        "availability_status": "UNAVAILABLE"
+                    },
+                    "curbside": {
+                        "availability_status": "NOT_SOLD_IN_STORE"
+                    },
+                    "store": {
+                        "store_id": "1776",
+                        "main_voice_phone_number": "720-922-1475",
+                        "location_name": "Denver SW",
+                        "mailing_address": {
+                            "address_line1": "9390 W Cross Dr",
+                            "city": "Littleton",
+                            "postal_code": "80123-2202",
+                            "state": "Colorado"
+                        },
+                        "rolling_operating_hours": {
+                            "main_hours": {
+                                "days": [
+                                    {
+                                        "date": "2022-05-27",
+                                        "day_name": "Friday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "07:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-05-28",
+                                        "day_name": "Saturday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "07:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-05-29",
+                                        "day_name": "Sunday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "07:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-05-30",
+                                        "day_name": "Monday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "07:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-05-31",
+                                        "day_name": "Tuesday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "07:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-01",
+                                        "day_name": "Wednesday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "07:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-02",
+                                        "day_name": "Thursday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "07:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-03",
+                                        "day_name": "Friday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "07:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-04",
+                                        "day_name": "Saturday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "07:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-05",
+                                        "day_name": "Sunday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "07:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-06",
+                                        "day_name": "Monday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "07:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-07",
+                                        "day_name": "Tuesday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "07:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-08",
+                                        "day_name": "Wednesday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "07:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-09",
+                                        "day_name": "Thursday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "07:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                {
+                    "location_id": "2052",
+                    "location_available_to_promise_quantity": 0,
+                    "distance": 19.63,
+                    "order_pickup": {
+                        "availability_status": "OUT_OF_STOCK"
+                    },
+                    "in_store_only": {
+                        "availability_status": "OUT_OF_STOCK"
+                    },
+                    "ship_to_store": {
+                        "availability_status": "UNAVAILABLE"
+                    },
+                    "curbside": {
+                        "availability_status": "OUT_OF_STOCK"
+                    },
+                    "store": {
+                        "store_id": "2052",
+                        "main_voice_phone_number": "303-209-8720",
+                        "location_name": "Denver Northfield Blvd",
+                        "mailing_address": {
+                            "address_line1": "7930 Northfield Blvd",
+                            "city": "Denver",
+                            "postal_code": "80238-3527",
+                            "state": "Colorado"
+                        },
+                        "rolling_operating_hours": {
+                            "main_hours": {
+                                "days": [
+                                    {
+                                        "date": "2022-05-27",
+                                        "day_name": "Friday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "07:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-05-28",
+                                        "day_name": "Saturday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "07:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-05-29",
+                                        "day_name": "Sunday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "07:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-05-30",
+                                        "day_name": "Monday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "07:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-05-31",
+                                        "day_name": "Tuesday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "07:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-01",
+                                        "day_name": "Wednesday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "07:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-02",
+                                        "day_name": "Thursday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "07:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-03",
+                                        "day_name": "Friday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "07:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-04",
+                                        "day_name": "Saturday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "07:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-05",
+                                        "day_name": "Sunday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "07:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-06",
+                                        "day_name": "Monday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "07:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-07",
+                                        "day_name": "Tuesday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "07:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-08",
+                                        "day_name": "Wednesday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "07:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-09",
+                                        "day_name": "Thursday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "07:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                {
+                    "location_id": "3279",
+                    "location_available_to_promise_quantity": 0,
+                    "distance": 19.64,
+                    "order_pickup": {
+                        "availability_status": "OUT_OF_STOCK"
+                    },
+                    "in_store_only": {
+                        "availability_status": "OUT_OF_STOCK"
+                    },
+                    "ship_to_store": {
+                        "availability_status": "UNAVAILABLE"
+                    },
+                    "curbside": {
+                        "availability_status": "UNAVAILABLE"
+                    },
+                    "store": {
+                        "store_id": "3279",
+                        "main_voice_phone_number": "303-222-7520",
+                        "location_name": "Denver Downtown",
+                        "mailing_address": {
+                            "address_line1": "1600 California St, Ste 14",
+                            "city": "Denver",
+                            "postal_code": "80202-3709",
+                            "state": "Colorado"
+                        },
+                        "rolling_operating_hours": {
+                            "main_hours": {
+                                "days": [
+                                    {
+                                        "date": "2022-05-27",
+                                        "day_name": "Friday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "07:00:00",
+                                                "end_time": "21:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-05-28",
+                                        "day_name": "Saturday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "08:00:00",
+                                                "end_time": "21:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-05-29",
+                                        "day_name": "Sunday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "08:00:00",
+                                                "end_time": "20:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-05-30",
+                                        "day_name": "Monday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "07:00:00",
+                                                "end_time": "21:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-05-31",
+                                        "day_name": "Tuesday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "07:00:00",
+                                                "end_time": "21:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-01",
+                                        "day_name": "Wednesday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "07:00:00",
+                                                "end_time": "21:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-02",
+                                        "day_name": "Thursday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "07:00:00",
+                                                "end_time": "21:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-03",
+                                        "day_name": "Friday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "07:00:00",
+                                                "end_time": "21:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-04",
+                                        "day_name": "Saturday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "08:00:00",
+                                                "end_time": "21:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-05",
+                                        "day_name": "Sunday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "08:00:00",
+                                                "end_time": "20:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-06",
+                                        "day_name": "Monday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "07:00:00",
+                                                "end_time": "21:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-07",
+                                        "day_name": "Tuesday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "07:00:00",
+                                                "end_time": "21:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-08",
+                                        "day_name": "Wednesday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "07:00:00",
+                                                "end_time": "21:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-09",
+                                        "day_name": "Thursday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "07:00:00",
+                                                "end_time": "21:00:00"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                {
+                    "location_id": "2717",
+                    "location_available_to_promise_quantity": 0,
+                    "distance": 21,
+                    "order_pickup": {
+                        "availability_status": "OUT_OF_STOCK"
+                    },
+                    "in_store_only": {
+                        "availability_status": "OUT_OF_STOCK"
+                    },
+                    "ship_to_store": {
+                        "availability_status": "UNAVAILABLE"
+                    },
+                    "curbside": {
+                        "availability_status": "OUT_OF_STOCK"
+                    },
+                    "store": {
+                        "store_id": "2717",
+                        "main_voice_phone_number": "303-209-7749",
+                        "location_name": "Lakewood",
+                        "mailing_address": {
+                            "address_line1": "460 S Vance St",
+                            "city": "Lakewood",
+                            "postal_code": "80226-3305",
+                            "state": "Colorado"
+                        },
+                        "rolling_operating_hours": {
+                            "main_hours": {
+                                "days": [
+                                    {
+                                        "date": "2022-05-27",
+                                        "day_name": "Friday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "08:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-05-28",
+                                        "day_name": "Saturday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "08:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-05-29",
+                                        "day_name": "Sunday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "08:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-05-30",
+                                        "day_name": "Monday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "08:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-05-31",
+                                        "day_name": "Tuesday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "08:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-01",
+                                        "day_name": "Wednesday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "08:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-02",
+                                        "day_name": "Thursday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "08:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-03",
+                                        "day_name": "Friday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "08:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-04",
+                                        "day_name": "Saturday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "08:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-05",
+                                        "day_name": "Sunday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "08:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-06",
+                                        "day_name": "Monday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "08:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-07",
+                                        "day_name": "Tuesday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "08:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-08",
+                                        "day_name": "Wednesday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "08:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "date": "2022-06-09",
+                                        "day_name": "Thursday",
+                                        "is_open": true,
+                                        "hours": [
+                                            {
+                                                "begin_time": "08:00:00",
+                                                "end_time": "22:00:00"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                }
+            ]
+        }
+    }
+}

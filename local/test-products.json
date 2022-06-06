@@ -1,0 +1,14 @@
+{
+    "products": [
+        {
+            "name": "Up&Up Sensitive Baby Formula",
+            "tcin": "70000046",
+            "desired_quantity": 1
+          },
+          {
+            "name": "Enfamil NeuroPro Gentlease",
+            "tcin": "79334027",
+            "desired_quantity": 1
+          }
+    ]
+}

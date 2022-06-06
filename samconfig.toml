@@ -1,0 +1,12 @@
+version = 0.1
+[stage]
+[stage.deploy]
+[stage.deploy.parameters]
+stack_name = "target-tracker-stage"
+s3_bucket = "aws-sam-cli-managed-default-samclisourcebucket-19frygaby8sgu"
+s3_prefix = "target-tracker-stage"
+region = "us-east-2"
+profile = "adam"
+confirm_changeset = true
+capabilities = "CAPABILITY_IAM"
+image_repositories = []
