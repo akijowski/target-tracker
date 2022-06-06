@@ -6,6 +6,15 @@ build:
 validate:
 	sam validate --profile adam
 
+go-test:
+	go test ./functions/*
+
+go-test-v:
+	go test -v ./functions/*
+
+go-vet:
+	go vet ./functions/*
+
 sfn-local:
 	docker compose \
 	-f docker-compose.local.yml \
@@ -30,7 +39,7 @@ test-happy:
 	--endpoint http://localhost:8083 \
 	--name "HappyPathExecution" \
 	--state-machine "arn:aws:states:us-east-2:123456789012:stateMachine:LocalTesting#HappyPathTest" \
-	--input file://local/test-products.json \
+	--input file://local/sfn/test-products.json \
 	--no-cli-pager
 
 test-empty:
@@ -38,7 +47,7 @@ test-empty:
 	--endpoint http://localhost:8083 \
 	--name "NoStoresExecution" \
 	--state-machine "arn:aws:states:us-east-2:123456789012:stateMachine:LocalTesting#NoStoresTest" \
-	--input file://local/test-products.json \
+	--input file://local/sfn/test-products.json \
 	--no-cli-pager
 
 test-db-error:
@@ -46,7 +55,7 @@ test-db-error:
 	--endpoint http://localhost:8083 \
 	--name "DBErrorExecution" \
 	--state-machine "arn:aws:states:us-east-2:123456789012:stateMachine:LocalTesting#DynamoErrorTest" \
-	--input file://local/test-products.json \
+	--input file://local/sfn/test-products.json \
 	--no-cli-pager
 
 test-all: create test-happy test-empty test-db-error
@@ -79,21 +88,21 @@ product-checker: build
 	sam local invoke \
 	--debug \
 	--region us-east-2 \
-	--event ./local/event-product.json \
+	--event ./local/lambda/event-product.json \
 	ProductCheckerFunction
 
 message-formatter: build
 	sam local invoke \
 	--debug \
 	--region us-east-2 \
-	--event ./local/message-input.json \
+	--event ./local/lambda/message-input.json \
 	MessageFormatterFunction
 
 message-formatter-empty: build
 	sam local invoke \
 	--debug \
 	--region us-east-2 \
-	--event ./local/message-input-empty.json \
+	--event ./local/lambda/message-input-empty.json \
 	MessageFormatterFunction
 
 deploy-stage: build

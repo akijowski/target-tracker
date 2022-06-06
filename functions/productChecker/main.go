@@ -16,8 +16,9 @@ import (
 )
 
 const (
-	basePath string = "/redsky_aggregations/v1/web_platform/fiats_v1"
-	URLKey   string = "9f36aeafbe60771e321a7cc95a78140772ab3e96"
+	URIEnvKey string = "API_URI"
+	basePath  string = "/redsky_aggregations/v1/web_platform/fiats_v1"
+	URLKey    string = "9f36aeafbe60771e321a7cc95a78140772ab3e96"
 	// 1 week
 	TTLOffset int64 = 7 * 24 * 3600
 )
@@ -77,12 +78,12 @@ func handler(ctx context.Context, productQuery ProductQuery) (ProductResult, err
 func main() {
 	logger = log.Default()
 	logger.SetPrefix("product_checker ")
-	logger.SetFlags(log.Ldate | log.Ltime | log.LUTC | log.Lshortfile)
+	logger.SetFlags(log.Lshortfile | log.Lmsgprefix)
 	lambda.Start(handler)
 }
 
 func marshalURL(pq ProductQuery) string {
-	host := os.Getenv("API_URI")
+	host := os.Getenv(URIEnvKey)
 	q := url.Values{}
 	q.Set("key", URLKey)
 	q.Set("nearby", "80134")

@@ -98,6 +98,6 @@ func handler(ctx context.Context, input ProductsInput) (string, error) {
 func main() {
 	logger = log.Default()
 	logger.SetPrefix("message_formatter ")
-	logger.SetFlags(log.Ldate | log.Ltime | log.LUTC | log.Lshortfile)
+	logger.SetFlags(log.Lshortfile | log.Lmsgprefix)
 	lambda.Start(handler)
 }
