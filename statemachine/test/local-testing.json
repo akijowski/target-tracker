@@ -4,17 +4,20 @@
             "TestCases": {
                 "HappyPathTest": {
                     "GetProduct": "ProductLambdaSuccess",
+                    "HistoricalStats": "StatsLambdaSuccess",
                     "FormatMessage": "FormatterLambdaSuccess",
                     "AlertOnProduct": "SNSSuccess",
                     "SaveToDynamo": "DynamoSuccess"
                 },
                 "NoStoresTest": {
                     "GetProduct": "ProductLambdaEmptySuccess",
+                    "HistoricalStats": "StatsLambdaSuccess",
                     "FormatMessage": "FormatterLambdaEmptySuccess",
                     "SaveToDynamo": "DynamoSuccess"
                 },
                 "DynamoErrorTest": {
                     "GetProduct": "ProductLambdaSuccess",
+                    "HistoricalStats": "StatsLambdaSuccess",
                     "FormatMessage": "FormatterLambdaSuccess",
                     "AlertOnProduct": "SNSSuccess",
                     "SaveToDynamo": "DynamoFail"
@@ -67,6 +70,14 @@
             }
         },
         "FormatterLambdaEmptySuccess": {
+            "0": {
+                "Return": {
+                    "StatusCode": 200,
+                    "Payload": ""
+                }
+            }
+        },
+        "StatsLambdaSuccess": {
             "0": {
                 "Return": {
                     "StatusCode": 200,

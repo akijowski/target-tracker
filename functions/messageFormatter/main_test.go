@@ -4,24 +4,26 @@ import (
 	"context"
 	"log"
 	"testing"
+
+	"github.com/akijowski/target-tracker/internal/schema"
 )
 
 func TestHandler(t *testing.T) {
 	cases := map[string]struct {
-		input    ProductsInput
+		input    schema.ProductsInput
 		expected string
 	}{
 		"No Results Returns Empty": {
-			input: ProductsInput{
-				Products: []Product{
+			input: schema.ProductsInput{
+				Products: []schema.Product{
 					{
-						ProductQuery: ProductQuery{
+						ProductQuery: schema.ProductQuery{
 							Name:            "formula",
 							DesiredQuantity: 1,
 							ProductURL:      "",
 						},
-						Result: ProductResult{
-							Stores: []StoreResult{
+						Result: schema.ProductResult{
+							Stores: []schema.StoreResult{
 								{AvailableToPromise: 0, LocationName: "Denver", StoreID: "1234"},
 							},
 							TotalStores: 0,
@@ -32,21 +34,21 @@ func TestHandler(t *testing.T) {
 			expected: "",
 		},
 		"Results Returns Message": {
-			input: ProductsInput{
-				Products: []Product{
+			input: schema.ProductsInput{
+				Products: []schema.Product{
 					{
-						ProductQuery: ProductQuery{
+						ProductQuery: schema.ProductQuery{
 							Name:            "special formula",
 							DesiredQuantity: 1,
 							ProductURL:      "url-to-formula",
 						},
-						Result: ProductResult{
-							Stores: []StoreResult{
+						Result: schema.ProductResult{
+							Stores: []schema.StoreResult{
 								{
 									AvailableToPromise: 3,
 									LocationName:       "Denver",
 									StoreID:            "1234",
-									MailingAddress: StoreMailingAddress{
+									MailingAddress: schema.StoreMailingAddress{
 										AddressLine1: "123 Main St",
 										City:         "Denver",
 										State:        "Colorado",

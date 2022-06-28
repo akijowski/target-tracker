@@ -6,6 +6,12 @@ Description: >
   It's crazy tough to get baby formula right now.
   Let's automate checking Target for product.
 
+Parameters:
+  BucketPrefix:
+    Type: String
+    Description: The prefix for the created S3 bucket
+    Default: kijowski
+
 Globals:
   Function:
     Runtime: go1.x
@@ -121,6 +127,29 @@ Resources:
       - Key: Project
         Value: !Ref 'AWS::StackName'
 
+  HistoricalStatsFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: !Sub '${AWS::StackName}-historical-stats'
+      Description: Save historical data to an S3 bucket
+      CodeUri: functions/historicalStats/
+      Handler: historicalStats
+      Policies:
+        - S3CrudPolicy:
+            BucketName: !Ref HistoricalStatsBucket
+      Environment:
+        Variables:
+          STATS_BUCKET_NAME: !Ref HistoricalStatsBucket
+
+  HistoricalStatsLogGroup:
+    Type: AWS::Logs::LogGroup
+    Properties:
+      LogGroupName: !Sub '/aws/lambda/${AWS::StackName}-historical-stats'
+      RetentionInDays: 7
+      Tags:
+      - Key: Project
+        Value: !Ref 'AWS::StackName'
+
   ResultsTable:
     Type: AWS::DynamoDB::Table
     Properties:
@@ -153,6 +182,14 @@ Resources:
           Protocol: email
         - Endpoint: '{{resolve:ssm:TargetTrackerEmail2:1}}'
           Protocol: email
+      Tags:
+        - Key: Project
+          Value: !Ref 'AWS::StackName'
+
+  HistoricalStatsBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: !Sub '${BucketPrefix}-${AWS::StackName}-historical-stats'
       Tags:
         - Key: Project
           Value: !Ref 'AWS::StackName'

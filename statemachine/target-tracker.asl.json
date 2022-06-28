@@ -77,6 +77,29 @@
                 }
             },
             "ResultPath": "$.products",
+            "Next": "HistoricalStats"
+        },
+        "HistoricalStats": {
+            "Type": "Task",
+            "Comment": "Calculate and store stats to an S3 bucket",
+            "Resource": "arn:aws:states:::lambda:invoke",
+            "Parameters": {
+                "FunctionName": "${HistoricalStatsFunction}",
+                "Payload.$": "$"
+            },
+            "ResultPath": null,
+            "Retry": [
+                {
+                    "ErrorEquals": [
+                        "Lambda.ServiceException",
+                        "Lambda.AWSLambdaException",
+                        "Lambda.SdkClientException"
+                    ],
+                    "IntervalSeconds": 2,
+                    "MaxAttempts": 6,
+                    "BackoffRate": 2
+                }
+            ],
             "Next": "FormatMessage"
         },
         "FormatMessage": {

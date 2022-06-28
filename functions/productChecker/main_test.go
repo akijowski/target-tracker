@@ -10,24 +10,26 @@ import (
 	"strings"
 	"testing"
 	"time"
+
+	"github.com/akijowski/target-tracker/internal/schema"
 )
 
 func TestHandler(t *testing.T) {
 	defaultEnv := os.Environ()
 
 	cases := map[string]struct {
-		input       ProductQuery
-		expected    ProductResult
+		input       schema.ProductQuery
+		expected    schema.ProductResult
 		apiResponse TargetAPIResult
 	}{
 		"No availability returns correctly": {
-			input: ProductQuery{
+			input: schema.ProductQuery{
 				Name:            "mock-product",
 				TCIN:            "123456",
 				DesiredQuantity: 1,
 			},
-			expected: ProductResult{
-				Stores:      []StoreResult{},
+			expected: schema.ProductResult{
+				Stores:      []schema.StoreResult{},
 				TotalStores: 0,
 			},
 			apiResponse: TargetAPIResult{
@@ -43,7 +45,7 @@ func TestHandler(t *testing.T) {
 								Store: APIStore{
 									StoreID:        "9999",
 									LocationName:   "MockStore",
-									MailingAddress: StoreMailingAddress{},
+									MailingAddress: schema.StoreMailingAddress{},
 								},
 							},
 						},
@@ -52,17 +54,17 @@ func TestHandler(t *testing.T) {
 			},
 		},
 		"Availability returns stores": {
-			input: ProductQuery{
+			input: schema.ProductQuery{
 				Name:            "mock-product",
 				TCIN:            "123456",
 				DesiredQuantity: 1,
 			},
-			expected: ProductResult{
-				Stores: []StoreResult{
+			expected: schema.ProductResult{
+				Stores: []schema.StoreResult{
 					{
 						AvailableToPromise: 10,
 						LocationName:       "MockStore",
-						MailingAddress:     StoreMailingAddress{},
+						MailingAddress:     schema.StoreMailingAddress{},
 						StoreID:            "9999",
 					},
 				},
@@ -81,7 +83,7 @@ func TestHandler(t *testing.T) {
 								Store: APIStore{
 									StoreID:        "9999",
 									LocationName:   "MockStore",
-									MailingAddress: StoreMailingAddress{},
+									MailingAddress: schema.StoreMailingAddress{},
 								},
 							},
 							{
@@ -90,7 +92,7 @@ func TestHandler(t *testing.T) {
 								Store: APIStore{
 									StoreID:        "0000",
 									LocationName:   "EmptyStore",
-									MailingAddress: StoreMailingAddress{},
+									MailingAddress: schema.StoreMailingAddress{},
 								},
 							},
 						},

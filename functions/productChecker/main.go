@@ -12,6 +12,7 @@ import (
 	"strconv"
 	"time"
 
+	"github.com/akijowski/target-tracker/internal/schema"
 	"github.com/aws/aws-lambda-go/lambda"
 )
 
@@ -26,49 +27,25 @@ const (
 var logger *log.Logger
 var client *http.Client = http.DefaultClient
 
-// ProductQuery is an event sent from the Step Function and contains information to query the API.
-type ProductQuery struct {
-	Name            string `json:"name"`
-	TCIN            string `json:"tcin"`
-	DesiredQuantity int    `json:"desired_quantity"`
-}
-
-// ProductResult is the result of querying the API for the given product.
-// `db_ttl` is included so if we persist this result, we have a TTL available.  We do it here so we don't have a lambda
-// in the StepFunction that is just generating timestamps.
-type ProductResult struct {
-	Stores      []StoreResult `json:"stores"`
-	TotalStores int           `json:"total_stores"`
-	DBTTL       int64         `json:"db_ttl"`
-}
-
-// StoreResult is an individual store information for the given product.
-type StoreResult struct {
-	AvailableToPromise int                 `json:"available"`
-	LocationName       string              `json:"location_name"`
-	MailingAddress     StoreMailingAddress `json:"mailing_address"`
-	StoreID            string              `json:"store_id"`
-}
-
-func handler(ctx context.Context, productQuery ProductQuery) (ProductResult, error) {
+func handler(ctx context.Context, productQuery schema.ProductQuery) (schema.ProductResult, error) {
 	logger.Printf("product query: %+v\n", productQuery)
 	if productQuery.DesiredQuantity == 0 {
 		productQuery.DesiredQuantity = 1
 	}
 	resp, err := doAPIRequest(ctx, productQuery)
 	if err != nil {
-		return ProductResult{}, err
+		return schema.ProductResult{}, err
 	}
 	allStores := storeResultsFromLocations(resp.Data.FulfillmentFiats.Locations)
 	logger.Printf("API returned results from (%d) stores\n", len(allStores))
-	filtered := []StoreResult{}
+	filtered := []schema.StoreResult{}
 	for _, s := range allStores {
 		if s.AvailableToPromise > 0 {
 			filtered = append(filtered, s)
 		}
 	}
 	logger.Printf("(%d) stores with product\n", len(filtered))
-	return ProductResult{
+	return schema.ProductResult{
 		Stores:      filtered,
 		TotalStores: len(filtered),
 		DBTTL:       time.Now().Unix() + TTLOffset,
@@ -82,7 +59,7 @@ func main() {
 	lambda.Start(handler)
 }
 
-func marshalURL(pq ProductQuery) string {
+func marshalURL(pq schema.ProductQuery) string {
 	host := os.Getenv(URIEnvKey)
 	q := url.Values{}
 	q.Set("key", URLKey)
@@ -96,10 +73,10 @@ func marshalURL(pq ProductQuery) string {
 	return fmt.Sprintf("%s%s?%s", host, basePath, q.Encode())
 }
 
-func storeResultsFromLocations(locs []APILocation) []StoreResult {
-	r := []StoreResult{}
+func storeResultsFromLocations(locs []APILocation) []schema.StoreResult {
+	r := []schema.StoreResult{}
 	for _, l := range locs {
-		r = append(r, StoreResult{
+		r = append(r, schema.StoreResult{
 			AvailableToPromise: int(l.LocationAvailableToPromiseQuantity),
 			LocationName:       l.Store.LocationName,
 			MailingAddress:     l.Store.MailingAddress,
@@ -109,7 +86,7 @@ func storeResultsFromLocations(locs []APILocation) []StoreResult {
 	return r
 }
 
-func doAPIRequest(ctx context.Context, pq ProductQuery) (result TargetAPIResult, err error) {
+func doAPIRequest(ctx context.Context, pq schema.ProductQuery) (result TargetAPIResult, err error) {
 	url := marshalURL(pq)
 	// logger.Printf("url: %s\n", url)
 	req, err := http.NewRequestWithContext(ctx, http.MethodGet, url, nil)
