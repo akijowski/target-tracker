@@ -44,7 +44,7 @@ Finally, if there is an alert to send, an SNS topic with email subscriptions rec
 
 ## Lambda Functions
 
-There are two Lambda functions in this state machine
+There are three Lambda functions in this state machine
 
 ### Product Checker
 
@@ -53,6 +53,12 @@ The Product Checker function recieves a product as input.  It will query the Tar
 ### Message Formatter
 
 The Message Formatter function recieves a list of product query results and determines if an alert message can be created.  If there are no products available it will return an empty string.  The empty string is used by the Choice Rules in the state machine to avoid publishing to SNS.
+
+### Historical Stats
+
+The Historical Stats function recieves a list of product query results and saves the data in JSON format to an S3 bucket.  It runs in parallel with the Message Formatter function.
+
+Why an S3 bucket?  Why not just make a secondary index in DynamoDB?  I decided that since this data is read only, and is updated on a fixed schedule, the added cost of a secondary index in Dynamo didn't make sense for this purpose.  To read this data only requires an API call to an S3 object, which removes the need for any API Gateway or other layer as well.
 
 ## DynamoDB
 

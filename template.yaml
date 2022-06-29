@@ -33,6 +33,7 @@ Resources:
         AlertTopicArn: !Ref ProductAlertTopic
         MessageFormatterFunction: !Ref MessageFormatterFunction
         ProductCheckerFunction: !Ref ProductCheckerFunction
+        HistoricalStatsFunction: !Ref HistoricalStatsFunction
         ResultsTableName: !Ref ResultsTable
       Events:
         HourlySchedule:
@@ -210,3 +211,6 @@ Outputs:
   ResultsTableArn:
     Description: "Results Table ARN"
     Value: !GetAtt ResultsTable.Arn
+  HistoricalStatsBucket:
+    Description: "S3 Bucket for historical data"
+    Value: !Ref HistoricalStatsBucket
