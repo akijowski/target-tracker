@@ -3,8 +3,6 @@ package main
 import (
 	"bytes"
 	"context"
-	"crypto/sha256"
-	"encoding/base64"
 	"encoding/json"
 	"errors"
 	"io"
@@ -162,17 +160,17 @@ func saveStatsToS3(ctx context.Context, api S3PutObjectAPI, bucketName string, s
 	if err != nil {
 		return err
 	}
-	checksum := sha256BytesToString(b)
+	// checksum := sha256BytesToString(b)
 	body := bytes.NewReader(b)
 	_, err = api.PutObject(ctx, &s3.PutObjectInput{
-		Bucket:            aws.String(bucketName),
-		Key:               aws.String(objectKey),
-		Body:              body,
-		ContentEncoding:   aws.String("application/json"),
-		ChecksumAlgorithm: types.ChecksumAlgorithmSha256,
-		ChecksumSHA256:    aws.String(checksum),
+		Bucket:          aws.String(bucketName),
+		Key:             aws.String(objectKey),
+		Body:            body,
+		ContentEncoding: aws.String("application/json"),
 	})
-	logger.Printf("Successfully wrote stat to S3: %s\n", b)
+	if err == nil {
+		logger.Printf("Successfully wrote stat to S3: %s\n", b)
+	}
 	return err
 }
 
@@ -204,7 +202,7 @@ func configureS3Client() (S3API, error) {
 	}
 }
 
-func sha256BytesToString(b []byte) string {
-	sha256Hash := sha256.New()
-	return base64.StdEncoding.EncodeToString(sha256Hash.Sum(b))
-}
+// func sha256BytesToString(b []byte) string {
+// 	sha256Hash := sha256.New()
+// 	return base64.StdEncoding.EncodeToString(sha256Hash.Sum(b))
+// }

@@ -101,10 +101,10 @@ Resources:
       AlarmDescription: !Sub 'Step Function errors for ${AWS::StackName}'
       Namespace: AWS/States
       MetricName: ExecutionsFailed
-      ComparisonOperator: GreaterThanOrEqualToThreshold
+      ComparisonOperator: GreaterThanThreshold
       EvaluationPeriods: 2
       Period: 3600 #1 hour
-      Threshold: 1.0
+      Threshold: 0
       Statistic: Maximum
 
   ProductCheckerFunction:
