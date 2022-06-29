@@ -7,14 +7,13 @@ import (
 	"errors"
 	"io"
 	"log"
-	"net/http"
 	"os"
-	"strconv"
 	"time"
 
 	"github.com/akijowski/target-tracker/internal/schema"
 	"github.com/aws/aws-lambda-go/lambda"
 	"github.com/aws/aws-sdk-go-v2/aws"
+	"github.com/aws/aws-sdk-go-v2/config"
 	"github.com/aws/aws-sdk-go-v2/service/s3"
 	"github.com/aws/aws-sdk-go-v2/service/s3/types"
 	"github.com/aws/smithy-go"
@@ -51,8 +50,10 @@ type HistoricalData struct {
 }
 
 const (
-	bucketNameEnv = "STATS_BUCKET_NAME"
-	objectName    = "historical_stats.json"
+	s3URIEnv       = "S3_URI_OVERRIDE"
+	s3NoSuchKeyErr = "NoSuchKey"
+	bucketNameEnv  = "STATS_BUCKET_NAME"
+	objectKey      = "historical_stats.json"
 )
 
 var (
@@ -78,6 +79,8 @@ func handler(ctx context.Context, input schema.ProductsInput) error {
 	for _, product := range input.Products {
 		addHistoricalData(stats, product)
 	}
+	// update products
+	stats.Products = input.Products
 	// saveToS3
 	return saveStatsToS3(ctx, s3APIClient, bucketName, stats)
 }
@@ -86,19 +89,25 @@ func main() {
 	logger = log.Default()
 	logger.SetPrefix("historical_stats ")
 	logger.SetFlags(log.Lshortfile | log.Lmsgprefix)
+	client, err := configureS3Client()
+	s3APIClient = client
+	if err != nil {
+		panic(err)
+	}
 	lambda.Start(handler)
 }
 
 func getCurrentStatsOrEmpty(ctx context.Context, api S3GetObjectAPI, bucketName string) (*HistoricalStats, error) {
 	out, err := api.GetObject(ctx, &s3.GetObjectInput{
 		Bucket:       aws.String(bucketName),
-		Key:          aws.String(objectName),
+		Key:          aws.String(objectKey),
 		ChecksumMode: types.ChecksumModeEnabled,
 	})
 	var ae smithy.APIError
 	if errors.As(err, &ae) {
 		logger.Printf("S3 error: %s", ae)
-		if ae.ErrorCode() == strconv.Itoa(http.StatusNotFound) {
+		logger.Printf("ae: %#v", ae)
+		if ae.ErrorCode() == s3NoSuchKeyErr {
 			return &HistoricalStats{CreatedAt: processingTime.Unix()}, nil
 		} else {
 			return nil, err
@@ -127,7 +136,6 @@ func checkStatsAge(stats *HistoricalStats, procTime time.Time) {
 }
 
 func addHistoricalData(stats *HistoricalStats, product schema.Product) {
-	stats.Products = append(stats.Products, product)
 	data := HistoricalData{Count: product.Result.TotalStores, Time: processingTime.Unix()}
 	statIdx := -1
 	for i, existingStat := range stats.History {
@@ -142,6 +150,7 @@ func addHistoricalData(stats *HistoricalStats, product schema.Product) {
 	} else {
 		stats.History[statIdx].Data = append(stats.History[statIdx].Data, data)
 	}
+	stats.LastUpdatedAt = processingTime.Unix()
 }
 
 func saveStatsToS3(ctx context.Context, api S3PutObjectAPI, bucketName string, stats *HistoricalStats) error {
@@ -152,9 +161,36 @@ func saveStatsToS3(ctx context.Context, api S3PutObjectAPI, bucketName string, s
 	body := bytes.NewReader(b)
 	_, err = api.PutObject(ctx, &s3.PutObjectInput{
 		Bucket:          aws.String(bucketName),
-		Key:             aws.String(objectName),
+		Key:             aws.String(objectKey),
 		Body:            body,
 		ContentEncoding: aws.String("application/json"),
 	})
+	logger.Printf("Successfully wrote stat to S3: %s\n", b)
 	return err
+}
+
+func configureS3Client() (S3API, error) {
+	ctx := context.Background()
+	if os.Getenv(s3URIEnv) != "" {
+		logger.Printf("Custom S3 URI found: %s\n", os.Getenv(s3URIEnv))
+		endpointCfg := config.WithEndpointResolverWithOptions(aws.EndpointResolverWithOptionsFunc(func(service, region string, options ...interface{}) (aws.Endpoint, error) {
+			return aws.Endpoint{
+				URL: os.Getenv(s3URIEnv),
+			}, nil
+		}))
+		cfg, err := config.LoadDefaultConfig(ctx, endpointCfg)
+		if err != nil {
+			return nil, err
+		}
+		// Localstack s3 requires path style
+		return s3.NewFromConfig(cfg, func(o *s3.Options) {
+			o.UsePathStyle = true
+		}), nil
+	} else {
+		cfg, err := config.LoadDefaultConfig(ctx)
+		if err != nil {
+			return nil, err
+		}
+		return s3.NewFromConfig(cfg), nil
+	}
 }

@@ -77,80 +77,96 @@
                 }
             },
             "ResultPath": "$.products",
-            "Next": "HistoricalStats"
+            "Next": "ProcessResults"
         },
-        "HistoricalStats": {
-            "Type": "Task",
-            "Comment": "Calculate and store stats to an S3 bucket",
-            "Resource": "arn:aws:states:::lambda:invoke",
-            "Parameters": {
-                "FunctionName": "${HistoricalStatsFunction}",
-                "Payload.$": "$"
-            },
-            "ResultPath": null,
-            "Retry": [
+        "ProcessResults": {
+            "Type": "Parallel",
+            "Branches": [
                 {
-                    "ErrorEquals": [
-                        "Lambda.ServiceException",
-                        "Lambda.AWSLambdaException",
-                        "Lambda.SdkClientException"
-                    ],
-                    "IntervalSeconds": 2,
-                    "MaxAttempts": 6,
-                    "BackoffRate": 2
+                    "StartAt": "HistoricalStats",
+                    "States": {
+                        "HistoricalStats": {
+                            "Type": "Task",
+                            "Comment": "Calculate and store stats in an S3 bucket",
+                            "Resource": "arn:aws:states:::lambda:invoke",
+                            "Parameters": {
+                                "FunctionName": "${HistoricalStatsFunction}",
+                                "Payload.$": "$"
+                            },
+                            "ResultPath": null,
+                            "Retry": [
+                                {
+                                    "ErrorEquals": [
+                                        "Lambda.ServiceException",
+                                        "Lambda.AWSLambdaException",
+                                        "Lambda.SdkClientException"
+                                    ],
+                                    "IntervalSeconds": 2,
+                                    "MaxAttempts": 6,
+                                    "BackoffRate": 2
+                                }
+                            ],
+                            "End": true
+                        }
+                    }
+                },
+                {
+                    "StartAt": "FormatMessage",
+                    "States": {
+                        "FormatMessage": {
+                            "Type": "Task",
+                            "Resource": "arn:aws:states:::lambda:invoke",
+                            "Parameters": {
+                                "FunctionName": "${MessageFormatterFunction}",
+                                "Payload.$": "$"
+                            },
+                            "ResultPath": "$.message",
+                            "ResultSelector": {
+                                "body.$": "$.Payload"
+                            },
+                            "Retry": [
+                                {
+                                    "ErrorEquals": [
+                                        "Lambda.ServiceException",
+                                        "Lambda.AWSLambdaException",
+                                        "Lambda.SdkClientException"
+                                    ],
+                                    "IntervalSeconds": 2,
+                                    "MaxAttempts": 6,
+                                    "BackoffRate": 2
+                                }
+                            ],
+                            "Next": "ShouldAlert?"
+                        },
+                        "ShouldAlert?": {
+                            "Type": "Choice",
+                            "Choices": [
+                                {
+                                    "Comment": "Is there any product worth alerting on?  An empty message means no alert is needed",
+                                    "StringGreaterThan": "",
+                                    "Variable": "$.message.body",
+                                    "Next": "AlertOnProduct"
+                                }
+                            ],
+                            "Default": "Pass"
+                        },
+                        "Pass": {
+                            "Type": "Succeed"
+                        },
+                        "AlertOnProduct": {
+                            "Type": "Task",
+                            "Comment": "Send an alert to the SNS topic",
+                            "Resource": "arn:aws:states:::sns:publish",
+                            "Parameters": {
+                                "TopicArn": "${AlertTopicArn}",
+                                "Message.$": "$.message.body"
+                            },
+                            "ResultPath": null,
+                            "End": true
+                        }
+                    }
                 }
             ],
-            "Next": "FormatMessage"
-        },
-        "FormatMessage": {
-            "Type": "Task",
-            "Resource": "arn:aws:states:::lambda:invoke",
-            "Parameters": {
-                "FunctionName": "${MessageFormatterFunction}",
-                "Payload.$": "$"
-            },
-            "ResultPath": "$.message",
-            "ResultSelector": {
-                "body.$": "$.Payload"
-            },
-            "Retry": [
-                {
-                    "ErrorEquals": [
-                        "Lambda.ServiceException",
-                        "Lambda.AWSLambdaException",
-                        "Lambda.SdkClientException"
-                    ],
-                    "IntervalSeconds": 2,
-                    "MaxAttempts": 6,
-                    "BackoffRate": 2
-                }
-            ],
-            "Next": "ShouldAlert?"
-        },
-        "ShouldAlert?": {
-            "Type": "Choice",
-            "Choices": [
-                {
-                    "Comment": "Is there any product worth alerting on?  An empty message means no alert is needed",
-                    "StringGreaterThan": "",
-                    "Variable": "$.message.body",
-                    "Next": "AlertOnProduct"
-                }
-            ],
-            "Default": "Pass"
-        },
-        "Pass": {
-            "Type": "Succeed"
-        },
-        "AlertOnProduct": {
-            "Type": "Task",
-            "Comment": "Send an alert to the SNS topic",
-            "Resource": "arn:aws:states:::sns:publish",
-            "Parameters": {
-                "TopicArn": "${AlertTopicArn}",
-                "Message.$": "$.message.body"
-            },
-            "ResultPath": null,
             "End": true
         }
     }

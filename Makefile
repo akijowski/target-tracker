@@ -1,4 +1,4 @@
-.PHONY: build
+.PHONY: build local
 
 build:
 	sam build
@@ -7,21 +7,30 @@ validate:
 	sam validate --profile adam
 
 go-test:
-	go test ./functions/*
+	go test \
+	./functions/historicalStats \
+	./functions/productChecker \
+	./functions/messageFormatter
 
 go-test-v:
-	go test -v ./functions/*
+	go test -v \
+	./functions/historicalStats \
+	./functions/productChecker \
+	./functions/messageFormatter
 
 go-vet:
-	go vet ./functions/*
+	go vet \
+	./functions/historicalStats \
+	./functions/productChecker \
+	./functions/messageFormatter
 
-sfn-local:
+local:
 	docker compose \
 	-f docker-compose.local.yml \
 	up \
 	-d
 
-sfn-local-stop:
+local-stop:
 	docker compose \
 	-f docker-compose.local.yml \
 	down
@@ -33,6 +42,30 @@ create:
 	--name "LocalTesting" \
 	--role-arn "arn:aws:iam::123456789012:role/DummyRole" \
 	--no-cli-pager
+
+s3-mb:
+	aws s3 mb s3://test-historical-bucket \
+	--endpoint http://localhost:4566 \
+	--profile default
+
+s3-ls:
+	aws s3 ls \
+	--recursive \
+	--endpoint http://localhost:4566 \
+	--profile default
+
+s3-cp:
+	aws s3 cp s3://test-historical-bucket/historical_stats.json /dev/stdout \
+	--quiet \
+	--endpoint http://localhost:4566 \
+	--profile default \
+	| jq . \
+	| less
+
+s3-rm:
+	aws s3 rm s3://test-historical-bucket/historical_stats.json \
+	--endpoint http://localhost:4566 \
+	--profile default
 
 test-happy:
 	aws stepfunctions start-execution \
@@ -104,6 +137,16 @@ message-formatter-empty: build
 	--region us-east-2 \
 	--event ./local/lambda/message-input-empty.json \
 	MessageFormatterFunction
+
+historical-stats: build
+	sam local invoke \
+	--debug \
+	--region us-east-2 \
+	--event ./local/lambda/message-input.json \
+	--env-vars ./local/lambda/stats-env.json \
+	--docker-network aws-sam-local \
+	--region us-east-2 \
+	HistoricalStatsFunction
 
 deploy-stage: build
 	sam deploy \

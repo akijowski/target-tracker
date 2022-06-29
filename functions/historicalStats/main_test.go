@@ -91,16 +91,16 @@ func TestGetCurrentStatsOrEmpty(t *testing.T) {
 				})
 			},
 		},
-		"S3 404 error returns empty stats": {
+		"S3 no such key error returns empty stats": {
 			expected: &HistoricalStats{CreatedAt: nowUnix},
 			api: func(t *testing.T) S3GetObjectAPI {
 				return mockS3GetObjectAPI(func(ctx context.Context, params *s3.GetObjectInput, optFns ...func(*s3.Options)) (*s3.GetObjectOutput, error) {
 					t.Helper()
 					validateGetObjectParams(t, params)
 					ae := &smithy.GenericAPIError{
-						Code:    "404",
+						Code:    s3NoSuchKeyErr,
 						Message: "Object not found",
-						Fault:   smithy.FaultUnknown,
+						Fault:   smithy.FaultClient,
 					}
 					return nil, ae
 				})

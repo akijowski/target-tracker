@@ -139,8 +139,8 @@ Resources:
             BucketName: !Ref HistoricalStatsBucket
       Environment:
         Variables:
+          S3_URI_OVERRIDE: ""
           STATS_BUCKET_NAME: !Ref HistoricalStatsBucket
-
   HistoricalStatsLogGroup:
     Type: AWS::Logs::LogGroup
     Properties:

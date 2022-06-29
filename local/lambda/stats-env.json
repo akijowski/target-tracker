@@ -1,0 +1,6 @@
+{
+    "HistoricalStatsFunction": {
+        "S3_URI_OVERRIDE": "http://localstack:4566",
+        "STATS_BUCKET_NAME": "test-historical-bucket"
+    }
+}

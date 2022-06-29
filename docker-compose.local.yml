@@ -11,3 +11,17 @@ services:
       SFN_MOCK_CONFIG: '/home/sfnlocal/local-testing.json'
     volumes:
       - "${PWD}/statemachine/test/local-testing.json:/home/sfnlocal/local-testing.json"
+  localstack:
+    image: localstack/localstack:0.14.4
+    container_name: localstack
+    ports:
+     - 4566:4566
+     - 4510-4559:4510-4559
+    environment:
+      LOCALSTACK_SERVICES: s3
+    networks:
+      - local
+
+networks:
+  local:
+    name: aws-sam-local
