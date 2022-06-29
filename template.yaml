@@ -83,6 +83,8 @@ Resources:
             FunctionName: !Ref ProductCheckerFunction
         - LambdaInvokePolicy:
             FunctionName: !Ref MessageFormatterFunction
+        - LambdaInvokePolicy:
+            FunctionName: !Ref HistoricalStatsFunction
         - DynamoDBWritePolicy:
             TableName: !Ref ResultsTable
         - SNSPublishMessagePolicy:
@@ -92,6 +94,18 @@ Resources:
       Type: EXPRESS
       Tags:
         Project: !Ref 'AWS::StackName'
+  TargetTrackerErrorAlarm:
+    Type: AWS::CloudWatch::Alarm
+    Properties:
+      AlarmName: !Sub '${AWS::StackName}-Errors'
+      AlarmDescription: !Sub 'Step Function errors for ${AWS::StackName}'
+      Namespace: AWS/States
+      MetricName: ExecutionsFailed
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      EvaluationPeriods: 2
+      Period: 3600 #1 hour
+      Threshold: 1.0
+      Statistic: Maximum
 
   ProductCheckerFunction:
     Type: AWS::Serverless::Function
