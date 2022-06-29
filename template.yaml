@@ -101,6 +101,9 @@ Resources:
       AlarmDescription: !Sub 'Step Function errors for ${AWS::StackName}'
       Namespace: AWS/States
       MetricName: ExecutionsFailed
+      Dimensions:
+        - Name: StateMachineArn
+          Value: !Ref TargetTrackerStateMachine
       ComparisonOperator: GreaterThanThreshold
       EvaluationPeriods: 2
       Period: 3600 #1 hour
