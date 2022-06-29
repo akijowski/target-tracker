@@ -208,6 +208,72 @@ Resources:
       Tags:
         - Key: Project
           Value: !Ref 'AWS::StackName'
+  HistoricalStatsBucketPolicy:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket: !Ref HistoricalStatsBucket
+      PolicyDocument:
+        Version: 2012-10-17
+        Statement:
+          - Action:
+            - 's3:GetObject'
+            Effect: Allow
+            Principal:
+              CanonicalUser: !GetAtt HistoricalStatsOAI.S3CanonicalUserId
+            Resource: !Sub '${HistoricalStatsBucket.Arn}/*'
+
+  HistoricalStatsOAI:
+    Type: AWS::CloudFront::CloudFrontOriginAccessIdentity
+    Properties:
+      CloudFrontOriginAccessIdentityConfig:
+        Comment: !Sub 'Access to ${HistoricalStatsBucket}'
+  HistoricalStatsCachePolicy:
+    Type: AWS::CloudFront::CachePolicy
+    Properties:
+      CachePolicyConfig:
+        Comment: !Sub 'Cache policy for ${HistoricalStatsBucket}'
+        DefaultTTL: 3600
+        MaxTTL: 3600
+        MinTTL: 1800
+        Name: !Ref HistoricalStatsBucket
+        ParametersInCacheKeyAndForwardedToOrigin:
+          CookiesConfig:
+            CookieBehavior: none
+          EnableAcceptEncodingGzip: true
+          EnableAcceptEncodingBrotli: true
+          HeadersConfig:
+            HeaderBehavior: none
+          QueryStringsConfig:
+            QueryStringBehavior: none
+  HistoricalStatsDistribution:
+    Type: AWS::CloudFront::Distribution
+    Properties:
+      DistributionConfig:
+        Enabled: true
+        Comment: !Sub 'Distribution for ${HistoricalStatsBucket} S3 Bucket'
+        DefaultRootObject: ""
+        HttpVersion: http2
+        PriceClass: PriceClass_100
+        DefaultCacheBehavior:
+          TargetOriginId: HistoricalStatsBucket
+          ViewerProtocolPolicy: https-only
+          AllowedMethods:
+            - GET
+            - HEAD
+            - OPTIONS
+          CachedMethods:
+            - GET
+            - HEAD
+          CachePolicyId: !Ref HistoricalStatsCachePolicy
+          Compress: true
+        Origins:
+          - S3OriginConfig:
+              OriginAccessIdentity: !Sub 'origin-access-identity/cloudfront/${HistoricalStatsOAI}'
+            DomainName: !GetAtt HistoricalStatsBucket.DomainName
+            Id: HistoricalStatsBucket
+      Tags:
+        - Key: Project
+          Value: !Ref 'AWS::StackName'
 
 Outputs:
   TargetTrackerStateMachineArn:
@@ -228,3 +294,6 @@ Outputs:
   HistoricalStatsBucket:
     Description: "S3 Bucket for historical data"
     Value: !Ref HistoricalStatsBucket
+  HistoricalStatsDistribution:
+    Description: "CloudFront distribution for historical data"
+    Value: !Sub 'https://${HistoricalStatsDistribution.DomainName}'

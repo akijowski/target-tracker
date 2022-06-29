@@ -16,6 +16,7 @@ import (
 	"github.com/aws/aws-sdk-go-v2/config"
 	"github.com/aws/aws-sdk-go-v2/service/s3"
 	"github.com/aws/aws-sdk-go-v2/service/s3/types"
+	"github.com/aws/aws-xray-sdk-go/instrumentation/awsv2"
 	"github.com/aws/smithy-go"
 )
 
@@ -191,6 +192,8 @@ func configureS3Client() (S3API, error) {
 		if err != nil {
 			return nil, err
 		}
+		os.Setenv("AWS_XRAY_CONTEXT_MISSING", "LOG_ERROR")
+		awsv2.AWSV2Instrumentor(&cfg.APIOptions)
 		return s3.NewFromConfig(cfg), nil
 	}
 }

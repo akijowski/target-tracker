@@ -21,6 +21,7 @@ require (
 	github.com/aws/aws-sdk-go-v2/service/s3 v1.26.11 // indirect
 	github.com/aws/aws-sdk-go-v2/service/sso v1.11.8 // indirect
 	github.com/aws/aws-sdk-go-v2/service/sts v1.16.7 // indirect
+	github.com/aws/aws-xray-sdk-go v1.7.0 // indirect
 	github.com/aws/smithy-go v1.11.3 // indirect
 	github.com/davecgh/go-spew v1.1.1 // indirect
 )
