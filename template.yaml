@@ -269,6 +269,8 @@ Resources:
             - HEAD
           CachePolicyId: !Ref HistoricalStatsCachePolicy
           Compress: true
+          # https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/using-managed-response-headers-policies.html
+          ResponseHeadersPolicyId: 5cc3b908-e619-4b99-88e5-2cf7f45965bd
         Origins:
           - S3OriginConfig:
               OriginAccessIdentity: !Sub 'origin-access-identity/cloudfront/${HistoricalStatsOAI}'
