@@ -99,6 +99,8 @@ Resources:
     Properties:
       AlarmName: !Sub '${AWS::StackName}-Errors'
       AlarmDescription: !Sub 'Step Function errors for ${AWS::StackName}'
+      AlarmActions:
+        - !Ref ErrorAlertTopic
       Namespace: AWS/States
       MetricName: ExecutionsFailed
       Dimensions:
@@ -203,6 +205,37 @@ Resources:
       Tags:
         - Key: Project
           Value: !Ref 'AWS::StackName'
+  ErrorAlertTopic:
+    Type: AWS::SNS::Topic
+    Properties:
+      DisplayName: Target Tracker Errors
+      TopicName: !Sub '${AWS::StackName}-errors'
+      Subscription:
+        - Endpoint: '{{resolve:ssm:TargetTrackerEmail1:1}}'
+          Protocol: email
+      Tags:
+        - Key: Project
+          Value: !Ref 'AWS::StackName'
+  # https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/US_SetupSNS.html
+  ErrorAlertTopicPolicy:
+    Type: AWS::SNS::TopicPolicy
+    Properties:
+      Topics:
+        - !Ref ErrorAlertTopic
+      PolicyDocument:
+        Version: 2012-10-17
+        Statement:
+          - Action:
+            - 'SNS:Publish'
+            Effect: Allow
+            Principal:
+              Service: 'cloudwatch.amazonaws.com'
+            Resource: !Ref ErrorAlertTopic
+            Condition:
+              ArnLike:
+                'aws:SourceArn': !Sub 'arn:aws:cloudwatch:${AWS::Region}:${AWS::AccountId}:alarm:*'
+              StringEquals:
+                'aws:SourceAccount': !Ref 'AWS::AccountId'
 
   HistoricalStatsBucket:
     Type: AWS::S3::Bucket
