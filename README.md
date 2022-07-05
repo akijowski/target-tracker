@@ -38,7 +38,7 @@ The application is configured to run a scheduled AWS Event Bridge rule every hou
 
 For each product, a Lambda function is called to query Target for availability within a certain radius.  The results of the query are saved to DynamoDB for record keeping.
 
-The result of the first stage of the state machine is a list of query results.  This list is sent to another Lambda to parse and turn in to an alert message.  If there are no stores with any products, an empty message is returned to implictly indicate no alert should be sent.
+The result of the first stage of the state machine is a list of query results.  This list is sent to another Lambda to parse and turn in to an alert message.  If there are no stores with any products, an empty message is returned to implictly indicate no alert should be sent.  Another choice is included to manually disable SNS alerts.  This was added because enough stores had product so there was less value in a continuous alert that says basically the same thing each time.  Toggling this choice controls the SNS alert flow.
 
 Finally, if there is an alert to send, an SNS topic with email subscriptions recieves the message and ends the state machine.
 
