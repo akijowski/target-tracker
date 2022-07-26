@@ -14,6 +14,7 @@ import (
 
 	"github.com/akijowski/target-tracker/internal/schema"
 	"github.com/aws/aws-lambda-go/lambda"
+	"github.com/aws/aws-xray-sdk-go/xray"
 )
 
 const (
@@ -56,6 +57,7 @@ func main() {
 	logger = log.Default()
 	logger.SetPrefix("product_checker ")
 	logger.SetFlags(log.Lshortfile | log.Lmsgprefix)
+	client = xray.Client(client)
 	lambda.Start(handler)
 }
 
