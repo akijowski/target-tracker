@@ -35,6 +35,7 @@ func TestHandler(t *testing.T) {
 			apiResponse: TargetAPIResult{
 				Data: struct {
 					FulfillmentFiats APIFulfillmentFiats `json:"fulfillment_fiats"`
+					Product          APIProduct          `json:"product"`
 				}{
 					FulfillmentFiats: APIFulfillmentFiats{
 						ProductID: "123456",
@@ -73,6 +74,7 @@ func TestHandler(t *testing.T) {
 			apiResponse: TargetAPIResult{
 				Data: struct {
 					FulfillmentFiats APIFulfillmentFiats `json:"fulfillment_fiats"`
+					Product          APIProduct          `json:"product"`
 				}{
 					FulfillmentFiats: APIFulfillmentFiats{
 						ProductID: "123456",

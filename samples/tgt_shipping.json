@@ -1,0 +1,78 @@
+{
+    "data": {
+        "product": {
+            "__typename": "Product",
+            "tcin": "70000042",
+            "store_positions": [
+                {
+                    "aisle": 16,
+                    "block": "L"
+                }
+            ],
+            "notify_me_enabled": false,
+            "fulfillment": {
+                "product_id": "70000042",
+                "is_out_of_stock_in_all_store_locations": false,
+                "store_options": [
+                    {
+                        "location_id": "1976",
+                        "store": {
+                            "location_name": "Aurora Saddle Rock",
+                            "mailing_address": {
+                                "address_line1": "7400 S Gartrell Rd",
+                                "city": "Aurora",
+                                "state": "Colorado",
+                                "postal_code": "80016-4236"
+                            }
+                        },
+                        "search_response_store_type": "PRIMARY",
+                        "location_available_to_promise_quantity": 0,
+                        "order_pickup": {
+                            "availability_status": "UNAVAILABLE"
+                        },
+                        "in_store_only": {
+                            "availability_status": "LIMITED_STOCK_SEE_STORE"
+                        },
+                        "ship_to_store": {
+                            "availability_status": "UNAVAILABLE"
+                        }
+                    },
+                    {
+                        "location_id": "3386",
+                        "store": {
+                            "location_name": "Denver University Hills Plaza",
+                            "mailing_address": {
+                                "address_line1": "2490 S. Colorado Blvd",
+                                "city": "Denver",
+                                "state": "Colorado",
+                                "postal_code": "80222-5907"
+                            }
+                        },
+                        "search_response_store_type": "BACKUP",
+                        "location_available_to_promise_quantity": 1,
+                        "order_pickup": {
+                            "pickup_date": "2022-08-04",
+                            "guest_pick_sla": 120,
+                            "availability_status": "IN_STOCK",
+                            "location_locale": "America/Denver"
+                        },
+                        "in_store_only": {
+                            "availability_status": "IN_STOCK"
+                        }
+                    }
+                ],
+                "shipping_options": {
+                    "availability_status": "OUT_OF_STOCK",
+                    "loyalty_availability_status": "OUT_OF_STOCK",
+                    "available_to_promise_quantity": 0,
+                    "reason_code": "INVENTORY_UNAVAILABLE",
+                    "services": []
+                },
+                "scheduled_delivery": {
+                    "availability_status": "OUT_OF_STOCK",
+                    "location_available_to_promise_quantity": 0
+                }
+            }
+        }
+    }
+}

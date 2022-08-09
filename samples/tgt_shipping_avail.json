@@ -1,0 +1,65 @@
+{
+    "data": {
+        "product": {
+            "__typename": "Product",
+            "tcin": "79334027",
+            "store_positions": [
+                {
+                    "aisle": 16,
+                    "block": "L"
+                }
+            ],
+            "notify_me_enabled": false,
+            "fulfillment": {
+                "product_id": "79334027",
+                "is_out_of_stock_in_all_store_locations": false,
+                "store_options": [
+                    {
+                        "location_id": "1976",
+                        "store": {
+                            "location_name": "Aurora Saddle Rock",
+                            "mailing_address": {
+                                "address_line1": "7400 S Gartrell Rd",
+                                "city": "Aurora",
+                                "state": "Colorado",
+                                "postal_code": "80016-4236"
+                            }
+                        },
+                        "search_response_store_type": "PRIMARY",
+                        "location_available_to_promise_quantity": 1,
+                        "order_pickup": {
+                            "pickup_date": "2022-08-04",
+                            "guest_pick_sla": 120,
+                            "availability_status": "IN_STOCK",
+                            "location_locale": "America/Denver"
+                        },
+                        "in_store_only": {
+                            "availability_status": "IN_STOCK"
+                        }
+                    }
+                ],
+                "shipping_options": {
+                    "availability_status": "IN_STOCK",
+                    "loyalty_availability_status": "IN_STOCK",
+                    "available_to_promise_quantity": 10,
+                    "services": [
+                        {
+                            "is_two_day_shipping": true,
+                            "is_base_shipping_method": true,
+                            "shipping_method_id": "STANDARD",
+                            "cutoff": "2022-08-05T18:00:00Z",
+                            "max_delivery_date": "2022-08-07",
+                            "min_delivery_date": "2022-08-07",
+                            "shipping_method_short_description": "Standard",
+                            "service_level_description": "2-day shipping"
+                        }
+                    ]
+                },
+                "scheduled_delivery": {
+                    "availability_status": "IN_STOCK",
+                    "location_available_to_promise_quantity": 1
+                }
+            }
+        }
+    }
+}
