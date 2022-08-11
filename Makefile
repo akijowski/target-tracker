@@ -91,7 +91,15 @@ test-db-error:
 	--input file://local/sfn/test-products.json \
 	--no-cli-pager
 
-test-all: create test-happy test-empty test-db-error
+test-no-pickup-alert:
+	aws stepfunctions start-execution \
+	--endpoint http://localhost:8083 \
+	--name "NoPickupAlert" \
+	--state-machine "arn:aws:states:us-east-2:123456789012:stateMachine:LocalTesting#HappyPathTest" \
+	--input file://local/sfn/test-products-no-pickup.json \
+	--no-cli-pager
+
+test-all: create test-happy test-empty test-db-error test-no-pickup-alert
 
 hist-happy:
 	aws stepfunctions get-execution-history \
@@ -113,6 +121,15 @@ hist-db-error:
 	aws stepfunctions get-execution-history \
 	--endpoint http://localhost:8083 \
 	--execution-arn "arn:aws:states:us-east-2:123456789012:execution:LocalTesting:DBErrorExecution" \
+	--query 'events[?(type==`TaskStateEntered` || type==`TaskStateExited` || type==`MapStateEntered` || type==`MapStateExited` || type==`ExecutionSucceeded` || type==`ExecutionFailed`) || (type==`TaskScheduled` && taskScheduledEventDetails.resourceType==`dynamodb`)]' \
+	--no-cli-pager \
+	| jq
+	| jq
+
+hist-no-pickup-alert:
+	aws stepfunctions get-execution-history \
+	--endpoint http://localhost:8083 \
+	--execution-arn "arn:aws:states:us-east-2:123456789012:execution:LocalTesting:NoPickupAlert" \
 	--query 'events[?(type==`TaskStateEntered` || type==`TaskStateExited` || type==`MapStateEntered` || type==`MapStateExited` || type==`ExecutionSucceeded` || type==`ExecutionFailed`) || (type==`TaskScheduled` && taskScheduledEventDetails.resourceType==`dynamodb`)]' \
 	--no-cli-pager \
 	| jq

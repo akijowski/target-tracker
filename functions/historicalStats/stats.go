@@ -55,7 +55,7 @@ func checkStatsAge(stats *HistoricalStats, procTime time.Time) {
 }
 
 func addHistoricalData(stats *HistoricalStats, product schema.Product) {
-	data := HistoricalData{Count: product.Result.TotalStores, Time: processingTime.Unix()}
+	data := HistoricalData{Count: product.Result.Pickup.TotalStores, Time: processingTime.Unix()}
 	statIdx := -1
 	for i, existingStat := range stats.History {
 		if existingStat.ProductName == product.ProductQuery.Name {

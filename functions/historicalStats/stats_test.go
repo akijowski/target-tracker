@@ -268,7 +268,9 @@ func TestAddHistoricalData(t *testing.T) {
 					Name: "formula",
 				},
 				Result: schema.ProductResult{
-					TotalStores: 2,
+					Pickup: schema.PickupResult{
+						TotalStores: 2,
+					},
 				},
 			},
 			stats: &HistoricalStats{
@@ -303,7 +305,9 @@ func TestAddHistoricalData(t *testing.T) {
 					Name: "formula",
 				},
 				Result: schema.ProductResult{
-					TotalStores: 2,
+					Pickup: schema.PickupResult{
+						TotalStores: 2,
+					},
 				},
 			},
 			stats: &HistoricalStats{

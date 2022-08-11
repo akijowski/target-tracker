@@ -17,8 +17,7 @@
                         },
                         "ResultPath": "$.result",
                         "ResultSelector": {
-                            "stores.$": "$.Payload.stores",
-                            "total_stores.$": "$.Payload.total_stores",
+                            "pickup.$": "$.Payload.pickup",
                             "db_ttl.$": "$.Payload.db_ttl"
                         },
                         "Retry": [
@@ -55,10 +54,10 @@
                                     "N.$": "States.JsonToString($.desired_quantity)"
                                 },
                                 "total_stores": {
-                                    "N.$": "States.JsonToString($.result.total_stores)"
+                                    "N.$": "States.JsonToString($.result.pickup.total_stores)"
                                 },
                                 "result": {
-                                    "S.$": "States.JsonToString($.result)"
+                                    "S.$": "States.JsonToString($.result.pickup)"
                                 },
                                 "TTL": {
                                     "N.$": "States.JsonToString($.result.db_ttl)"
@@ -136,41 +135,32 @@
                                     "BackoffRate": 2
                                 }
                             ],
-                            "Next": "DisableAlerts"
-                        },
-                        "DisableAlerts": {
-                            "Type": "Pass",
-                            "Comment": "Set this to true to disable alerting via SNS.  This is a manual override of SNS alerts",
-                            "Result": true,
-                            "ResultPath": "$.disableAlerts",
                             "Next": "ShouldAlert?"
                         },
                         "ShouldAlert?": {
                             "Type": "Choice",
                             "Choices": [
                                 {
-                                    "Comment": "Is there any product worth alerting on?  An empty message means no alert is needed",
-                                    "StringGreaterThan": "",
-                                    "Variable": "$.message.body",
-                                    "Next": "ManualOverride?"
+                                    "And": [
+                                        {
+                                            "Comment": "Is there any product worth alerting on?  An empty message means no alert is needed",
+                                            "StringGreaterThan": "",
+                                            "Variable": "$.message.body"
+                                        },
+                                        {
+                                            "Comment": "Is alerting disabled?",
+                                            "BooleanEquals": true,
+                                            "Variable": "$.alert_on_pickup"
+                                        }
+                                    ],
+                                    "Comment": "If alert_on_pickup is set and we have a message to send, continue on",
+                                    "Next": "AlertOnProduct"
                                 }
                             ],
                             "Default": "Pass"
                         },
                         "Pass": {
                             "Type": "Succeed"
-                        },
-                        "ManualOverride?": {
-                            "Type": "Choice",
-                            "Choices": [
-                                {
-                                    "Comment": "Check if SNS Alerts were disabled",
-                                    "BooleanEquals": true,
-                                    "Variable": "$.disableAlerts",
-                                    "Next": "Pass"
-                                }
-                            ],
-                            "Default": "AlertOnProduct"
                         },
                         "AlertOnProduct": {
                             "Type": "Task",

@@ -19,13 +19,23 @@ type Product struct {
 	Result ProductResult `json:"result"`
 }
 
+// PickupResult is a collection of stores that are available for in-store pickup.
+type PickupResult struct {
+	Stores      []StoreResult `json:"stores"`
+	TotalStores int           `json:"total_stores"`
+}
+
+// DeliveryResult is...
+type DeliveryResult struct {
+}
+
 // ProductResult is the result of querying the API for the given product.
 // `db_ttl` is included so if we persist this result, we have a TTL available.  We do it here so we don't have a lambda
 // in the StepFunction that is just generating timestamps.
 type ProductResult struct {
-	Stores      []StoreResult `json:"stores"`
-	TotalStores int           `json:"total_stores"`
-	DBTTL       int64         `json:"db_ttl"`
+	Pickup   PickupResult   `json:"pickup,omitempty"`
+	Delivery DeliveryResult `json:"delivery,omitempty"`
+	DBTTL    int64          `json:"db_ttl"`
 }
 
 // StoreResult is an individual store information for the given product.

@@ -23,10 +23,12 @@ func TestHandler(t *testing.T) {
 							ProductURL:      "",
 						},
 						Result: schema.ProductResult{
-							Stores: []schema.StoreResult{
-								{AvailableToPromise: 0, LocationName: "Denver", StoreID: "1234"},
+							Pickup: schema.PickupResult{
+								Stores: []schema.StoreResult{
+									{AvailableToPromise: 0, LocationName: "Denver", StoreID: "1234"},
+								},
+								TotalStores: 0,
 							},
-							TotalStores: 0,
 						},
 					},
 				},
@@ -43,20 +45,22 @@ func TestHandler(t *testing.T) {
 							ProductURL:      "url-to-formula",
 						},
 						Result: schema.ProductResult{
-							Stores: []schema.StoreResult{
-								{
-									AvailableToPromise: 3,
-									LocationName:       "Denver",
-									StoreID:            "1234",
-									MailingAddress: schema.StoreMailingAddress{
-										AddressLine1: "123 Main St",
-										City:         "Denver",
-										State:        "Colorado",
-										PostalCode:   "80100",
+							Pickup: schema.PickupResult{
+								Stores: []schema.StoreResult{
+									{
+										AvailableToPromise: 3,
+										LocationName:       "Denver",
+										StoreID:            "1234",
+										MailingAddress: schema.StoreMailingAddress{
+											AddressLine1: "123 Main St",
+											City:         "Denver",
+											State:        "Colorado",
+											PostalCode:   "80100",
+										},
 									},
 								},
+								TotalStores: 1,
 							},
-							TotalStores: 1,
 						},
 					},
 				},

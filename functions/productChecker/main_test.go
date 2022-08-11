@@ -29,8 +29,10 @@ func TestHandler(t *testing.T) {
 				DesiredQuantity: 1,
 			},
 			expected: schema.ProductResult{
-				Stores:      []schema.StoreResult{},
-				TotalStores: 0,
+				Pickup: schema.PickupResult{
+					Stores:      []schema.StoreResult{},
+					TotalStores: 0,
+				},
 			},
 			apiResponse: TargetAPIResult{
 				Data: struct {
@@ -61,15 +63,17 @@ func TestHandler(t *testing.T) {
 				DesiredQuantity: 1,
 			},
 			expected: schema.ProductResult{
-				Stores: []schema.StoreResult{
-					{
-						AvailableToPromise: 10,
-						LocationName:       "MockStore",
-						MailingAddress:     schema.StoreMailingAddress{},
-						StoreID:            "9999",
+				Pickup: schema.PickupResult{
+					Stores: []schema.StoreResult{
+						{
+							AvailableToPromise: 10,
+							LocationName:       "MockStore",
+							MailingAddress:     schema.StoreMailingAddress{},
+							StoreID:            "9999",
+						},
 					},
+					TotalStores: 1,
 				},
-				TotalStores: 1,
 			},
 			apiResponse: TargetAPIResult{
 				Data: struct {
@@ -138,11 +142,11 @@ func TestHandler(t *testing.T) {
 			if actual.DBTTL < approxTTL {
 				t.Errorf("DBTTL is not correct: %d, should be greater than %d", actual.DBTTL, approxTTL)
 			}
-			if actual.TotalStores != tt.expected.TotalStores {
-				t.Errorf("expected %d total stores, got: %d", tt.expected.TotalStores, actual.TotalStores)
+			if actual.Pickup.TotalStores != tt.expected.Pickup.TotalStores {
+				t.Errorf("expected %d total stores, got: %d", tt.expected.Pickup.TotalStores, actual.Pickup.TotalStores)
 			}
-			if len(actual.Stores) != len(tt.expected.Stores) {
-				t.Errorf("expected %d stores, got: %d", len(tt.expected.Stores), len(actual.Stores))
+			if len(actual.Pickup.Stores) != len(tt.expected.Pickup.Stores) {
+				t.Errorf("expected %d stores, got: %d", len(tt.expected.Pickup.Stores), len(actual.Pickup.Stores))
 			}
 		})
 	}

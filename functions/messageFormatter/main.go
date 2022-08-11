@@ -14,13 +14,13 @@ var (
 	logger *log.Logger
 )
 
-const emailTpl string = `Product Alert!
+const pickupEmailTpl string = `Product Alert!
 {{ range . -}}
 {{ .Name }}:
 {{ .ProductURL }}
 
-The following {{ .Result.TotalStores }} stores claim to have at least ({{ .DesiredQuantity }}) available:
-{{ range .Result.Stores -}}
+The following {{ .Result.Pickup.TotalStores }} stores claim to have at least ({{ .DesiredQuantity }}) available:
+{{ range .Result.Pickup.Stores -}}
 {{ .LocationName }}
 	Available: {{ .AvailableToPromise }}
 	StoreID: {{ .StoreID }}
@@ -40,15 +40,15 @@ func handler(ctx context.Context, input schema.ProductsInput) (string, error) {
 	logger.Printf("input: %+v\n", input)
 	filtered := []schema.Product{}
 	for _, p := range input.Products {
-		if p.Result.TotalStores > 0 {
+		if p.Result.Pickup.TotalStores > 0 {
 			filtered = append(filtered, p)
 		}
 	}
-	logger.Printf("creating message for %d products\n", len(filtered))
+	logger.Printf("creating in-store pickup message for %d products\n", len(filtered))
 	if len(filtered) == 0 {
 		return "", nil
 	}
-	t, err := template.New("email").Parse(emailTpl)
+	t, err := template.New("email").Parse(pickupEmailTpl)
 	if err != nil {
 		return "", err
 	}

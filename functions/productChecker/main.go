@@ -47,9 +47,9 @@ func handler(ctx context.Context, productQuery schema.ProductQuery) (schema.Prod
 	}
 	logger.Printf("(%d) stores with product\n", len(filtered))
 	return schema.ProductResult{
-		Stores:      filtered,
-		TotalStores: len(filtered),
-		DBTTL:       time.Now().Unix() + TTLOffset,
+		Pickup:   schema.PickupResult{Stores: filtered, TotalStores: len(filtered)},
+		Delivery: schema.DeliveryResult{},
+		DBTTL:    time.Now().Unix() + TTLOffset,
 	}, nil
 }
 

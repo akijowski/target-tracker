@@ -31,19 +31,21 @@
                 "Return": {
                     "StatusCode": 200,
                     "Payload": {
-                        "stores": [
-                            {
-                                "available": 2,
-                                "location_name": "Denver",
-                                "store_id": "1234"
-                            },
-                            {
-                                "available": 1,
-                                "location_name": "Aurora",
-                                "store_id": "5678"
-                            }
-                        ],
-                        "total_stores": 2,
+                        "pickup": {
+                            "stores": [
+                                {
+                                    "available": 2,
+                                    "location_name": "Denver",
+                                    "store_id": "1234"
+                                },
+                                {
+                                    "available": 1,
+                                    "location_name": "Aurora",
+                                    "store_id": "5678"
+                                }
+                            ],
+                            "total_stores": 2
+                        },
                         "db_ttl": 1654286103
                     }
                 }
@@ -54,8 +56,10 @@
                 "Return": {
                     "StatusCode": 200,
                     "Payload": {
-                        "stores": [],
-                        "total_stores": 0,
+                        "pickup": {
+                            "stores": [],
+                            "total_stores": 0
+                        },
                         "db_ttl": 1654286103
                     }
                 }
