@@ -69,7 +69,10 @@
             "0": {
                 "Return": {
                     "StatusCode": 200,
-                    "Payload": "the Denver store has 1 available"
+                    "Payload": {
+                        "pickup": "the Denver store has 1 available",
+                        "delivery": ""
+                    }
                 }
             }
         },
@@ -77,7 +80,10 @@
             "0": {
                 "Return": {
                     "StatusCode": 200,
-                    "Payload": ""
+                    "Payload": {
+                        "pickup": "",
+                        "delivery": ""
+                    }
                 }
             }
         },

@@ -6,8 +6,10 @@
             "desired_quantity": 1,
             "product_url": "https://www.target.com/p/gentle-non-gmo-powder-infant-formula-up-up/-/A-82052064",
             "result": {
-                "stores": [],
-                "total_stores": 0,
+                "pickup": {
+                    "stores": [],
+                    "total_stores": 0
+                },
                 "db_ttl": 1654286103
             },
             "dynamodb": {

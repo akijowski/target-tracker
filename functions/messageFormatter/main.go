@@ -36,27 +36,33 @@ The following {{ .Result.Pickup.TotalStores }} stores claim to have at least ({{
 {{- end -}}
 `
 
-func handler(ctx context.Context, input schema.ProductsInput) (string, error) {
+// MessageResult contains formatted messages for both pickup and delivery information.
+type MessageResult struct {
+	Pickup   string `json:"pickup"`
+	Delivery string `json:"delivery"`
+}
+
+func handler(ctx context.Context, input schema.ProductsInput) (MessageResult, error) {
 	logger.Printf("input: %+v\n", input)
-	filtered := []schema.Product{}
+	availableInStore := []schema.Product{}
 	for _, p := range input.Products {
 		if p.Result.Pickup.TotalStores > 0 {
-			filtered = append(filtered, p)
+			availableInStore = append(availableInStore, p)
 		}
 	}
-	logger.Printf("creating in-store pickup message for %d products\n", len(filtered))
-	if len(filtered) == 0 {
-		return "", nil
+	logger.Printf("creating in-store pickup message for %d products\n", len(availableInStore))
+	if len(availableInStore) == 0 {
+		return MessageResult{}, nil
 	}
 	t, err := template.New("email").Parse(pickupEmailTpl)
 	if err != nil {
-		return "", err
+		return MessageResult{}, err
 	}
 	var b bytes.Buffer
-	if err := t.Execute(&b, filtered); err != nil {
-		return "", err
+	if err := t.Execute(&b, availableInStore); err != nil {
+		return MessageResult{}, err
 	}
-	return b.String(), nil
+	return MessageResult{Pickup: b.String()}, nil
 }
 
 func main() {

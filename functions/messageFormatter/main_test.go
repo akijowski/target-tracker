@@ -11,7 +11,7 @@ import (
 func TestHandler(t *testing.T) {
 	cases := map[string]struct {
 		input    schema.ProductsInput
-		expected string
+		expected MessageResult
 	}{
 		"No Results Returns Empty": {
 			input: schema.ProductsInput{
@@ -33,7 +33,7 @@ func TestHandler(t *testing.T) {
 					},
 				},
 			},
-			expected: "",
+			expected: MessageResult{},
 		},
 		"Results Returns Message": {
 			input: schema.ProductsInput{
@@ -65,7 +65,7 @@ func TestHandler(t *testing.T) {
 					},
 				},
 			},
-			expected: `Product Alert!
+			expected: MessageResult{Pickup: `Product Alert!
 special formula:
 url-to-formula
 
@@ -79,7 +79,7 @@ Denver
 		80100
 		Colorado
 
-`,
+`},
 		},
 	}
 
@@ -93,7 +93,7 @@ Denver
 				t.Fatalf("unexpected error: %s", err)
 			}
 
-			if actual != tt.expected {
+			if actual.Pickup != tt.expected.Pickup {
 				t.Errorf("%s\n---\n%s", actual, tt.expected)
 			}
 		})
