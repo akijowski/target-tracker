@@ -121,7 +121,8 @@
                             },
                             "ResultPath": "$.message",
                             "ResultSelector": {
-                                "pickup_body.$": "$.Payload.pickup"
+                                "pickup_body.$": "$.Payload.pickup",
+                                "delivery_body.$": "$.Payload.delivery"
                             },
                             "Retry": [
                                 {
@@ -135,9 +136,9 @@
                                     "BackoffRate": 2
                                 }
                             ],
-                            "Next": "ShouldAlert?"
+                            "Next": "ShouldAlertOnPickup?"
                         },
-                        "ShouldAlert?": {
+                        "ShouldAlertOnPickup?": {
                             "Type": "Choice",
                             "Choices": [
                                 {
@@ -154,21 +155,54 @@
                                         }
                                     ],
                                     "Comment": "If alert_on_pickup is set and we have a message to send, continue on",
-                                    "Next": "AlertOnProduct"
+                                    "Next": "AlertOnProductPickup"
                                 }
                             ],
-                            "Default": "Pass"
+                            "Default": "ShouldAlertOnDelivery?"
                         },
                         "Pass": {
                             "Type": "Succeed"
                         },
-                        "AlertOnProduct": {
+                        "AlertOnProductPickup": {
                             "Type": "Task",
                             "Comment": "Send an alert to the SNS topic",
                             "Resource": "arn:aws:states:::sns:publish",
                             "Parameters": {
                                 "TopicArn": "${AlertTopicArn}",
                                 "Message.$": "$.message.pickup_body"
+                            },
+                            "ResultPath": null,
+                            "Next": "ShouldAlertOnDelivery?"
+                        },
+                        "ShouldAlertOnDelivery?": {
+                            "Type": "Choice",
+                            "Choices": [
+                                {
+                                    "And": [
+                                        {
+                                            "Comment": "Is there any product worth alerting on?  An empty message means no alert is needed",
+                                            "StringGreaterThan": "",
+                                            "Variable": "$.message.delivery_body"
+                                        },
+                                        {
+                                            "Comment": "Is alerting disabled?",
+                                            "BooleanEquals": true,
+                                            "Variable": "$.alert_on_delivery"
+                                        }
+                                    ],
+                                    "Comment": "If alert_on_delivery is set and we have a message to send, continue on",
+                                    "Next": "AlertOnProductDelivery"
+                                }
+                            ],
+                            "Default": "Pass"
+                        },
+                        "AlertOnProductDelivery": {
+                            "Type": "Task",
+                            "Comment": "Send an alert to the SNS topic",
+                            "Resource": "arn:aws:states:::sns:publish",
+                            "Parameters": {
+                                "TopicArn": "${AlertDeliveryTopicArn}",
+                                "Message.$": "$.message.delivery_body"
                             },
                             "ResultPath": null,
                             "End": true

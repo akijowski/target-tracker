@@ -6,7 +6,8 @@
                     "GetProduct": "ProductLambdaSuccess",
                     "HistoricalStats": "StatsLambdaSuccess",
                     "FormatMessage": "FormatterLambdaSuccess",
-                    "AlertOnProduct": "SNSSuccess",
+                    "AlertOnProductPickup": "SNSSuccess",
+                    "AlertOnProductDelivery": "SNSSuccess",
                     "SaveToDynamo": "DynamoSuccess"
                 },
                 "NoStoresTest": {
@@ -19,7 +20,8 @@
                     "GetProduct": "ProductLambdaSuccess",
                     "HistoricalStats": "StatsLambdaSuccess",
                     "FormatMessage": "FormatterLambdaSuccess",
-                    "AlertOnProduct": "SNSSuccess",
+                    "AlertOnProductPickup": "SNSSuccess",
+                    "AlertOnProductDelivery": "SNSSuccess",
                     "SaveToDynamo": "DynamoFail"
                 }
             }
@@ -71,7 +73,7 @@
                     "StatusCode": 200,
                     "Payload": {
                         "pickup": "the Denver store has 1 available",
-                        "delivery": ""
+                        "delivery": "You can order 7 online"
                     }
                 }
             }

@@ -155,6 +155,13 @@ message-formatter-empty: build
 	--event ./local/lambda/message-input-empty.json \
 	MessageFormatterFunction
 
+message-formatter-delivery: build
+	sam local invoke \
+	--debug \
+	--region us-east-2 \
+	--event ./local/lambda/message-input-delivery.json \
+	MessageFormatterFunction
+
 historical-stats: build
 	sam local invoke \
 	--debug \

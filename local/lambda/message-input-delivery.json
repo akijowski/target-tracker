@@ -11,8 +11,8 @@
                     "total_stores": 0
                 },
                 "delivery": {
-                    "available_to_promise": 0,
-                    "is_avalailable": false
+                    "available_to_promise": 4,
+                    "is_available": true
                 },
                 "db_ttl": 1654286103
             },

@@ -11,5 +11,6 @@
             "desired_quantity": 1
           }
     ],
-    "alert_on_pickup": true
+    "alert_on_pickup": true,
+    "alert_on_delivery": true
 }

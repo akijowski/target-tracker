@@ -25,8 +25,10 @@ type PickupResult struct {
 	TotalStores int           `json:"total_stores"`
 }
 
-// DeliveryResult is...
+// DeliveryResult is the delivery status for the given product.
 type DeliveryResult struct {
+	AvailableToPromise int  `json:"available_to_promise"`
+	IsAvailable        bool `json:"is_available"`
 }
 
 // ProductResult is the result of querying the API for the given product.

@@ -24,9 +24,7 @@ func TestHandler(t *testing.T) {
 						},
 						Result: schema.ProductResult{
 							Pickup: schema.PickupResult{
-								Stores: []schema.StoreResult{
-									{AvailableToPromise: 0, LocationName: "Denver", StoreID: "1234"},
-								},
+								Stores:      []schema.StoreResult{},
 								TotalStores: 0,
 							},
 						},
@@ -87,6 +85,7 @@ Denver
 		t.Run(name, func(t *testing.T) {
 			logger = log.Default()
 			ctx := context.Background()
+			prepareTemplates()
 			actual, err := handler(ctx, tt.input)
 
 			if err != nil {
@@ -95,6 +94,85 @@ Denver
 
 			if actual.Pickup != tt.expected.Pickup {
 				t.Errorf("%s\n---\n%s", actual, tt.expected)
+			}
+
+			if len(actual.Delivery) > 0 {
+				t.Errorf("expected delivery messsage to be empty.  Got:\n\t%s\n", actual.Delivery)
+			}
+		})
+	}
+}
+
+func TestHandler_Delivery(t *testing.T) {
+	cases := map[string]struct {
+		input    schema.ProductsInput
+		expected MessageResult
+	}{
+		"No Results Returns Empty": {
+			input: schema.ProductsInput{
+				Products: []schema.Product{
+					{
+						ProductQuery: schema.ProductQuery{
+							Name:            "formula",
+							DesiredQuantity: 1,
+							ProductURL:      "",
+						},
+						Result: schema.ProductResult{
+							Pickup: schema.PickupResult{
+								Stores:      []schema.StoreResult{},
+								TotalStores: 0,
+							},
+							Delivery: schema.DeliveryResult{},
+						},
+					},
+				},
+			},
+			expected: MessageResult{},
+		},
+		"Results Returns Message": {
+			input: schema.ProductsInput{
+				Products: []schema.Product{
+					{
+						ProductQuery: schema.ProductQuery{
+							Name:            "special formula",
+							DesiredQuantity: 1,
+							ProductURL:      "url-to-formula",
+						},
+						Result: schema.ProductResult{
+							Pickup: schema.PickupResult{
+								Stores: []schema.StoreResult{},
+							},
+							Delivery: schema.DeliveryResult{
+								AvailableToPromise: 1,
+								IsAvailable:        true,
+							},
+						},
+					},
+				},
+			},
+			expected: MessageResult{Delivery: `Product Alert!
+special formula is available for online order.  1 available:
+url-to-formula
+`},
+		},
+	}
+
+	for name, tt := range cases {
+		t.Run(name, func(t *testing.T) {
+			logger = log.Default()
+			ctx := context.Background()
+			prepareTemplates()
+			actual, err := handler(ctx, tt.input)
+
+			if err != nil {
+				t.Fatalf("unexpected error: %s", err)
+			}
+
+			if actual.Delivery != tt.expected.Delivery {
+				t.Errorf("%s\n---\n%s", actual, tt.expected)
+			}
+			if len(actual.Pickup) > 0 {
+				t.Errorf("expected pickup messsage to be empty.  Got:\n\t%s\n", actual.Pickup)
 			}
 		})
 	}

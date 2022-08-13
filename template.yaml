@@ -77,7 +77,8 @@ Resources:
                     "product_url": "https://www.target.com/p/enfamil-neuropro-gentlease-non-gmo-powder-infant-formula/-/A-81640508"
                   }
                 ],
-                "alert_on_pickup": true
+                "alert_on_pickup": false,
+                "alert_on_delivery": true
               }
       Policies:
         - LambdaInvokePolicy:
