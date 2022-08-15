@@ -48,7 +48,7 @@ There are three Lambda functions in this state machine
 
 ### Product Checker
 
-The Product Checker function recieves a product as input.  It will query the Target API and parse the results.  It will return a list of stores for the product (if any), and the total count.  In addition, it will calculate a TTL for saving this result in DynamoDB.
+The Product Checker function recieves a product as input.  It will query the Target API and parse the results.  It will return a list of stores for the product (if any), and the total count.  It will also query the API for shipping options.  In addition, it will calculate a TTL for saving this result in DynamoDB.
 
 ### Message Formatter
 
