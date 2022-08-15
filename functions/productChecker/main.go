@@ -40,14 +40,14 @@ func handler(ctx context.Context, productQuery schema.ProductQuery) (schema.Prod
 		return schema.ProductResult{}, err
 	}
 	logger.Printf("(%d) stores with product\n", len(availableStores))
-	deliveryResult, err := findDeliveryProducts(ctx, productQuery)
-	logger.Printf("Available for shipping: %v\n", deliveryResult.IsAvailable)
+	shippingResult, err := findShipping(ctx, productQuery)
+	logger.Printf("Available for shipping: %v\n", shippingResult.IsAvailable)
 	if err != nil {
 		return schema.ProductResult{}, err
 	}
 	return schema.ProductResult{
 		Pickup:   schema.PickupResult{Stores: availableStores, TotalStores: len(availableStores)},
-		Delivery: deliveryResult,
+		Shipping: shippingResult,
 		DBTTL:    time.Now().Unix() + TTLOffset,
 	}, nil
 }
@@ -74,7 +74,7 @@ func marshalInStoreURL(pq schema.ProductQuery) string {
 	return fmt.Sprintf("%s%s?%s", host, fiatBasePath, q.Encode())
 }
 
-func marshalDeliveryURL(pq schema.ProductQuery) string {
+func marshalShippingURL(pq schema.ProductQuery) string {
 	host := os.Getenv(URIEnvKey)
 	q := url.Values{}
 	q.Set("key", URLKey)
@@ -121,9 +121,9 @@ func findStoresForProduct(ctx context.Context, productQuery schema.ProductQuery)
 	return filtered, nil
 }
 
-func findDeliveryProducts(ctx context.Context, productQuery schema.ProductQuery) (schema.DeliveryResult, error) {
-	url := marshalDeliveryURL(productQuery)
-	result := schema.DeliveryResult{}
+func findShipping(ctx context.Context, productQuery schema.ProductQuery) (schema.ShippingResult, error) {
+	url := marshalShippingURL(productQuery)
+	result := schema.ShippingResult{}
 	resp, err := doAPIRequest(ctx, url)
 	if err != nil {
 		return result, err

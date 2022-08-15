@@ -96,14 +96,14 @@ Denver
 				t.Errorf("%s\n---\n%s", actual, tt.expected)
 			}
 
-			if len(actual.Delivery) > 0 {
-				t.Errorf("expected delivery messsage to be empty.  Got:\n\t%s\n", actual.Delivery)
+			if len(actual.Shipping) > 0 {
+				t.Errorf("expected shipping messsage to be empty.  Got:\n\t%s\n", actual.Shipping)
 			}
 		})
 	}
 }
 
-func TestHandler_Delivery(t *testing.T) {
+func TestHandler_Shipping(t *testing.T) {
 	cases := map[string]struct {
 		input    schema.ProductsInput
 		expected MessageResult
@@ -122,7 +122,7 @@ func TestHandler_Delivery(t *testing.T) {
 								Stores:      []schema.StoreResult{},
 								TotalStores: 0,
 							},
-							Delivery: schema.DeliveryResult{},
+							Shipping: schema.ShippingResult{},
 						},
 					},
 				},
@@ -142,7 +142,7 @@ func TestHandler_Delivery(t *testing.T) {
 							Pickup: schema.PickupResult{
 								Stores: []schema.StoreResult{},
 							},
-							Delivery: schema.DeliveryResult{
+							Shipping: schema.ShippingResult{
 								AvailableToPromise: 1,
 								IsAvailable:        true,
 							},
@@ -150,7 +150,7 @@ func TestHandler_Delivery(t *testing.T) {
 					},
 				},
 			},
-			expected: MessageResult{Delivery: `Product Alert!
+			expected: MessageResult{Shipping: `Product Alert!
 special formula is available for online order.  1 available:
 url-to-formula
 `},
@@ -168,7 +168,7 @@ url-to-formula
 				t.Fatalf("unexpected error: %s", err)
 			}
 
-			if actual.Delivery != tt.expected.Delivery {
+			if actual.Shipping != tt.expected.Shipping {
 				t.Errorf("%s\n---\n%s", actual, tt.expected)
 			}
 			if len(actual.Pickup) > 0 {

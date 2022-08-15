@@ -13,11 +13,11 @@ import (
 var (
 	logger           *log.Logger
 	pickupTemplate   *template.Template
-	deliveryTemplate *template.Template
+	shippingTemplate *template.Template
 )
 
 const pickupTemplateName = "pickup_email"
-const deliveryTemplateName = "delivery_email"
+const shippingTemplateName = "shipping_email"
 
 const pickupEmailTpl string = `
 {{- if gt (len .) 0 -}}
@@ -44,50 +44,50 @@ The following {{ .Result.Pickup.TotalStores }} stores claim to have at least ({{
 {{- end -}}
 `
 
-const deliveryEmailTpl string = `
+const shippingEmailTpl string = `
 {{- if gt (len .) 0 -}}
 Product Alert!
 {{ range . -}}
-{{ .Name }} is available for online order.  {{ .Result.Delivery.AvailableToPromise }} available:
+{{ .Name }} is available for online order.  {{ .Result.Shipping.AvailableToPromise }} available:
 {{ .ProductURL }}
 {{- end }}
 {{ end -}}
 `
 
-// MessageResult contains formatted messages for both pickup and delivery information.
+// MessageResult contains formatted messages for both pickup and shipping information.
 type MessageResult struct {
 	Pickup   string `json:"pickup"`
-	Delivery string `json:"delivery"`
+	Shipping string `json:"shipping"`
 }
 
 func handler(ctx context.Context, input schema.ProductsInput) (MessageResult, error) {
 	logger.Printf("input: %+v\n", input)
 	availableInStore := []schema.Product{}
-	availableDelivery := []schema.Product{}
+	availableShipping := []schema.Product{}
 	result := MessageResult{}
 	for _, p := range input.Products {
 		if p.Result.Pickup.TotalStores > 0 {
 			availableInStore = append(availableInStore, p)
 		}
-		if p.Result.Delivery.IsAvailable {
-			availableDelivery = append(availableDelivery, p)
+		if p.Result.Shipping.IsAvailable {
+			availableShipping = append(availableShipping, p)
 		}
 	}
 	logger.Printf("creating in-store pickup message for %d products\n", len(availableInStore))
-	logger.Printf("creating delivery pickup message for %d products\n", len(availableDelivery))
-	if len(availableInStore) == 0 && len(availableDelivery) == 0 {
+	logger.Printf("creating shipping pickup message for %d products\n", len(availableShipping))
+	if len(availableInStore) == 0 && len(availableShipping) == 0 {
 		return result, nil
 	}
 	pickupMessage, err := executeTemplate(pickupTemplate, availableInStore)
 	if err != nil {
 		return result, err
 	}
-	deliveryMessage, err := executeTemplate(deliveryTemplate, availableDelivery)
+	shippingMessage, err := executeTemplate(shippingTemplate, availableShipping)
 	if err != nil {
 		return result, err
 	}
 	result.Pickup = pickupMessage
-	result.Delivery = deliveryMessage
+	result.Shipping = shippingMessage
 	return result, nil
 }
 
@@ -101,7 +101,7 @@ func main() {
 
 func prepareTemplates() {
 	pickupTemplate = template.Must(template.New(pickupTemplateName).Parse(pickupEmailTpl))
-	deliveryTemplate = template.Must(template.New(deliveryTemplateName).Parse(deliveryEmailTpl))
+	shippingTemplate = template.Must(template.New(shippingTemplateName).Parse(shippingEmailTpl))
 }
 
 func executeTemplate(t *template.Template, input any) (string, error) {

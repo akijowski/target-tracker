@@ -25,8 +25,8 @@ type PickupResult struct {
 	TotalStores int           `json:"total_stores"`
 }
 
-// DeliveryResult is the delivery status for the given product.
-type DeliveryResult struct {
+// ShippingResult is the shipping status for the given product.
+type ShippingResult struct {
 	AvailableToPromise int  `json:"available_to_promise"`
 	IsAvailable        bool `json:"is_available"`
 }
@@ -36,7 +36,7 @@ type DeliveryResult struct {
 // in the StepFunction that is just generating timestamps.
 type ProductResult struct {
 	Pickup   PickupResult   `json:"pickup,omitempty"`
-	Delivery DeliveryResult `json:"delivery,omitempty"`
+	Shipping ShippingResult `json:"shipping,omitempty"`
 	DBTTL    int64          `json:"db_ttl"`
 }
 

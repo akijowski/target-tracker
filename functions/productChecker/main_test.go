@@ -117,7 +117,7 @@ func TestHandler(t *testing.T) {
 					Stores:      []schema.StoreResult{},
 					TotalStores: 0,
 				},
-				Delivery: schema.DeliveryResult{AvailableToPromise: 0, IsAvailable: false},
+				Shipping: schema.ShippingResult{AvailableToPromise: 0, IsAvailable: false},
 			},
 			apiResponse: TargetAPIResult{
 				Data: struct {
@@ -149,7 +149,7 @@ func TestHandler(t *testing.T) {
 					Stores:      []schema.StoreResult{},
 					TotalStores: 0,
 				},
-				Delivery: schema.DeliveryResult{AvailableToPromise: 10, IsAvailable: true},
+				Shipping: schema.ShippingResult{AvailableToPromise: 10, IsAvailable: true},
 			},
 			apiResponse: TargetAPIResult{
 				Data: struct {
@@ -212,11 +212,11 @@ func TestHandler(t *testing.T) {
 			if len(actual.Pickup.Stores) != len(tt.expected.Pickup.Stores) {
 				t.Errorf("expected %d stores, got: %d", len(tt.expected.Pickup.Stores), len(actual.Pickup.Stores))
 			}
-			if actual.Delivery.AvailableToPromise != tt.expected.Delivery.AvailableToPromise {
-				t.Errorf("expected %d available to promise, got: %d", tt.expected.Delivery.AvailableToPromise, actual.Delivery.AvailableToPromise)
+			if actual.Shipping.AvailableToPromise != tt.expected.Shipping.AvailableToPromise {
+				t.Errorf("expected %d available to promise, got: %d", tt.expected.Shipping.AvailableToPromise, actual.Shipping.AvailableToPromise)
 			}
-			if actual.Delivery.IsAvailable != tt.expected.Delivery.IsAvailable {
-				t.Errorf("expected %v total stores, got: %v", tt.expected.Delivery.IsAvailable, actual.Delivery.IsAvailable)
+			if actual.Shipping.IsAvailable != tt.expected.Shipping.IsAvailable {
+				t.Errorf("expected %v total stores, got: %v", tt.expected.Shipping.IsAvailable, actual.Shipping.IsAvailable)
 			}
 		})
 	}
