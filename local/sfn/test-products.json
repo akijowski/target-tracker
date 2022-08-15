@@ -12,5 +12,5 @@
           }
     ],
     "alert_on_pickup": true,
-    "alert_on_delivery": true
+    "alert_on_shipping": true
 }

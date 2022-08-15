@@ -18,11 +18,13 @@ import (
 )
 
 const (
-	URIEnvKey string = "API_URI"
-	basePath  string = "/redsky_aggregations/v1/web_platform/fiats_v1"
-	URLKey    string = "9f36aeafbe60771e321a7cc95a78140772ab3e96"
+	URIEnvKey             string = "API_URI"
+	fiatBasePath          string = "/redsky_aggregations/v1/web_platform/fiats_v1"
+	fulfillmentV1BasePath string = "/redsky_aggregations/v1/web_platform/product_fulfillment_v1"
+	URLKey                string = "9f36aeafbe60771e321a7cc95a78140772ab3e96"
 	// 1 week
-	TTLOffset int64 = 7 * 24 * 3600
+	TTLOffset       int64  = 7 * 24 * 3600
+	ShippingInStock string = "IN_STOCK"
 )
 
 var logger *log.Logger
@@ -33,22 +35,19 @@ func handler(ctx context.Context, productQuery schema.ProductQuery) (schema.Prod
 	if productQuery.DesiredQuantity == 0 {
 		productQuery.DesiredQuantity = 1
 	}
-	resp, err := doAPIRequest(ctx, productQuery)
+	availableStores, err := findStoresForProduct(ctx, productQuery)
 	if err != nil {
 		return schema.ProductResult{}, err
 	}
-	allStores := storeResultsFromLocations(resp.Data.FulfillmentFiats.Locations)
-	logger.Printf("API returned results from (%d) stores\n", len(allStores))
-	filtered := []schema.StoreResult{}
-	for _, s := range allStores {
-		if s.AvailableToPromise > 0 {
-			filtered = append(filtered, s)
-		}
+	logger.Printf("(%d) stores with product\n", len(availableStores))
+	deliveryResult, err := findDeliveryProducts(ctx, productQuery)
+	logger.Printf("Available for shipping: %v\n", deliveryResult.IsAvailable)
+	if err != nil {
+		return schema.ProductResult{}, err
 	}
-	logger.Printf("(%d) stores with product\n", len(filtered))
 	return schema.ProductResult{
-		Pickup:   schema.PickupResult{Stores: filtered, TotalStores: len(filtered)},
-		Delivery: schema.DeliveryResult{},
+		Pickup:   schema.PickupResult{Stores: availableStores, TotalStores: len(availableStores)},
+		Delivery: deliveryResult,
 		DBTTL:    time.Now().Unix() + TTLOffset,
 	}, nil
 }
@@ -61,7 +60,7 @@ func main() {
 	lambda.Start(handler)
 }
 
-func marshalURL(pq schema.ProductQuery) string {
+func marshalInStoreURL(pq schema.ProductQuery) string {
 	host := os.Getenv(URIEnvKey)
 	q := url.Values{}
 	q.Set("key", URLKey)
@@ -72,7 +71,24 @@ func marshalURL(pq schema.ProductQuery) string {
 	q.Set("tcin", pq.TCIN)
 	q.Set("requested_quantity", strconv.Itoa(int(pq.DesiredQuantity)))
 
-	return fmt.Sprintf("%s%s?%s", host, basePath, q.Encode())
+	return fmt.Sprintf("%s%s?%s", host, fiatBasePath, q.Encode())
+}
+
+func marshalDeliveryURL(pq schema.ProductQuery) string {
+	host := os.Getenv(URIEnvKey)
+	q := url.Values{}
+	q.Set("key", URLKey)
+	q.Set("is_bot", "false")
+	q.Set("tcin", pq.TCIN)
+	q.Set("store_id", "1976")
+	q.Set("zip", "80016")
+	q.Set("state", "CO")
+	q.Set("scheduled_delivery_store_id", "1976")
+	q.Set("required_store_id", "1976")
+	q.Set("has_required_store_id", "true")
+	q.Set("channel", "WEB")
+
+	return fmt.Sprintf("%s%s?%s", host, fulfillmentV1BasePath, q.Encode())
 }
 
 func storeResultsFromLocations(locs []APILocation) []schema.StoreResult {
@@ -88,8 +104,36 @@ func storeResultsFromLocations(locs []APILocation) []schema.StoreResult {
 	return r
 }
 
-func doAPIRequest(ctx context.Context, pq schema.ProductQuery) (result TargetAPIResult, err error) {
-	url := marshalURL(pq)
+func findStoresForProduct(ctx context.Context, productQuery schema.ProductQuery) ([]schema.StoreResult, error) {
+	url := marshalInStoreURL(productQuery)
+	resp, err := doAPIRequest(ctx, url)
+	if err != nil {
+		return nil, err
+	}
+	allStores := storeResultsFromLocations(resp.Data.FulfillmentFiats.Locations)
+	logger.Printf("API returned results from (%d) stores\n", len(allStores))
+	filtered := []schema.StoreResult{}
+	for _, s := range allStores {
+		if s.AvailableToPromise > 0 {
+			filtered = append(filtered, s)
+		}
+	}
+	return filtered, nil
+}
+
+func findDeliveryProducts(ctx context.Context, productQuery schema.ProductQuery) (schema.DeliveryResult, error) {
+	url := marshalDeliveryURL(productQuery)
+	result := schema.DeliveryResult{}
+	resp, err := doAPIRequest(ctx, url)
+	if err != nil {
+		return result, err
+	}
+	result.AvailableToPromise = int(resp.Data.Product.Fulfillment.ShippingOptions.AvailableToPromiseQuantity)
+	result.IsAvailable = resp.Data.Product.Fulfillment.ShippingOptions.AvailabilityStatus == ShippingInStock
+	return result, nil
+}
+
+func doAPIRequest(ctx context.Context, url string) (result TargetAPIResult, err error) {
 	// logger.Printf("url: %s\n", url)
 	req, err := http.NewRequestWithContext(ctx, http.MethodGet, url, nil)
 	if err != nil {

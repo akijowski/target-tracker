@@ -158,7 +158,7 @@
                                     "Next": "AlertOnProductPickup"
                                 }
                             ],
-                            "Default": "ShouldAlertOnDelivery?"
+                            "Default": "ShouldAlertOnShipping?"
                         },
                         "Pass": {
                             "Type": "Succeed"
@@ -172,9 +172,9 @@
                                 "Message.$": "$.message.pickup_body"
                             },
                             "ResultPath": null,
-                            "Next": "ShouldAlertOnDelivery?"
+                            "Next": "ShouldAlertOnShipping?"
                         },
-                        "ShouldAlertOnDelivery?": {
+                        "ShouldAlertOnShipping?": {
                             "Type": "Choice",
                             "Choices": [
                                 {
@@ -187,21 +187,21 @@
                                         {
                                             "Comment": "Is alerting disabled?",
                                             "BooleanEquals": true,
-                                            "Variable": "$.alert_on_delivery"
+                                            "Variable": "$.alert_on_shipping"
                                         }
                                     ],
-                                    "Comment": "If alert_on_delivery is set and we have a message to send, continue on",
-                                    "Next": "AlertOnProductDelivery"
+                                    "Comment": "If alert_on_shipping is set and we have a message to send, continue on",
+                                    "Next": "AlertOnProductShipping"
                                 }
                             ],
                             "Default": "Pass"
                         },
-                        "AlertOnProductDelivery": {
+                        "AlertOnProductShipping": {
                             "Type": "Task",
                             "Comment": "Send an alert to the SNS topic",
                             "Resource": "arn:aws:states:::sns:publish",
                             "Parameters": {
-                                "TopicArn": "${AlertDeliveryTopicArn}",
+                                "TopicArn": "${AlertShippingTopicArn}",
                                 "Message.$": "$.message.delivery_body"
                             },
                             "ResultPath": null,

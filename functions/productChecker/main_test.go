@@ -22,7 +22,7 @@ func TestHandler(t *testing.T) {
 		expected    schema.ProductResult
 		apiResponse TargetAPIResult
 	}{
-		"No availability returns correctly": {
+		"No in store availability returns correctly": {
 			input: schema.ProductQuery{
 				Name:            "mock-product",
 				TCIN:            "123456",
@@ -56,7 +56,7 @@ func TestHandler(t *testing.T) {
 				},
 			},
 		},
-		"Availability returns stores": {
+		"In store availability returns stores": {
 			input: schema.ProductQuery{
 				Name:            "mock-product",
 				TCIN:            "123456",
@@ -106,6 +106,70 @@ func TestHandler(t *testing.T) {
 				},
 			},
 		},
+		"No delivery returns correctly": {
+			input: schema.ProductQuery{
+				Name:            "mock-product",
+				TCIN:            "123456",
+				DesiredQuantity: 1,
+			},
+			expected: schema.ProductResult{
+				Pickup: schema.PickupResult{
+					Stores:      []schema.StoreResult{},
+					TotalStores: 0,
+				},
+				Delivery: schema.DeliveryResult{AvailableToPromise: 0, IsAvailable: false},
+			},
+			apiResponse: TargetAPIResult{
+				Data: struct {
+					FulfillmentFiats APIFulfillmentFiats `json:"fulfillment_fiats"`
+					Product          APIProduct          `json:"product"`
+				}{
+					FulfillmentFiats: APIFulfillmentFiats{},
+					Product: APIProduct{
+						TCIN: "123456",
+						Fulfillment: APIProductFulfillment{
+							IsOutOfStockInAllStoreLocations: true,
+							ShippingOptions: APIProductFulfillmentShippingOptions{
+								AvailableToPromiseQuantity: 0,
+								AvailabilityStatus:         "OUT_OF_STOCK",
+							},
+						},
+					},
+				},
+			},
+		},
+		"Delivery available returns correctly": {
+			input: schema.ProductQuery{
+				Name:            "mock-product",
+				TCIN:            "123456",
+				DesiredQuantity: 1,
+			},
+			expected: schema.ProductResult{
+				Pickup: schema.PickupResult{
+					Stores:      []schema.StoreResult{},
+					TotalStores: 0,
+				},
+				Delivery: schema.DeliveryResult{AvailableToPromise: 10, IsAvailable: true},
+			},
+			apiResponse: TargetAPIResult{
+				Data: struct {
+					FulfillmentFiats APIFulfillmentFiats `json:"fulfillment_fiats"`
+					Product          APIProduct          `json:"product"`
+				}{
+					FulfillmentFiats: APIFulfillmentFiats{},
+					Product: APIProduct{
+						TCIN: "123456",
+						Fulfillment: APIProductFulfillment{
+							IsOutOfStockInAllStoreLocations: true,
+							ShippingOptions: APIProductFulfillmentShippingOptions{
+								AvailableToPromiseQuantity: 10,
+								AvailabilityStatus:         "IN_STOCK",
+							},
+						},
+					},
+				},
+			},
+		},
 	}
 
 	for name, tt := range cases {
@@ -147,6 +211,12 @@ func TestHandler(t *testing.T) {
 			}
 			if len(actual.Pickup.Stores) != len(tt.expected.Pickup.Stores) {
 				t.Errorf("expected %d stores, got: %d", len(tt.expected.Pickup.Stores), len(actual.Pickup.Stores))
+			}
+			if actual.Delivery.AvailableToPromise != tt.expected.Delivery.AvailableToPromise {
+				t.Errorf("expected %d available to promise, got: %d", tt.expected.Delivery.AvailableToPromise, actual.Delivery.AvailableToPromise)
+			}
+			if actual.Delivery.IsAvailable != tt.expected.Delivery.IsAvailable {
+				t.Errorf("expected %v total stores, got: %v", tt.expected.Delivery.IsAvailable, actual.Delivery.IsAvailable)
 			}
 		})
 	}

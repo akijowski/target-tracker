@@ -7,7 +7,7 @@
                     "HistoricalStats": "StatsLambdaSuccess",
                     "FormatMessage": "FormatterLambdaSuccess",
                     "AlertOnProductPickup": "SNSSuccess",
-                    "AlertOnProductDelivery": "SNSSuccess",
+                    "AlertOnProductShipping": "SNSSuccess",
                     "SaveToDynamo": "DynamoSuccess"
                 },
                 "NoStoresTest": {
@@ -21,7 +21,7 @@
                     "HistoricalStats": "StatsLambdaSuccess",
                     "FormatMessage": "FormatterLambdaSuccess",
                     "AlertOnProductPickup": "SNSSuccess",
-                    "AlertOnProductDelivery": "SNSSuccess",
+                    "AlertOnProductShipping": "SNSSuccess",
                     "SaveToDynamo": "DynamoFail"
                 }
             }

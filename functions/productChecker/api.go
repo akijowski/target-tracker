@@ -34,6 +34,8 @@ type APIProduct struct {
 	Fulfillment APIProductFulfillment `json:"fulfillment"`
 }
 
+// APIProductFulfillment represents shipping and store delivery results.
+// Currently only capturing shipping results.  Not delivery from store.
 type APIProductFulfillment struct {
 	ProductID                       string                               `json:"product_id"`
 	IsOutOfStockInAllStoreLocations bool                                 `json:"is_out_of_stock_in_all_store_locations"`

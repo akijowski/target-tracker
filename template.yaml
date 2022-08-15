@@ -31,6 +31,7 @@ Resources:
       DefinitionUri: statemachine/target-tracker.asl.json
       DefinitionSubstitutions:
         AlertTopicArn: !Ref ProductAlertTopic
+        AlertShippingTopicArn: !Ref ProductShippingAlertTopic
         MessageFormatterFunction: !Ref MessageFormatterFunction
         ProductCheckerFunction: !Ref ProductCheckerFunction
         HistoricalStatsFunction: !Ref HistoricalStatsFunction
@@ -78,7 +79,7 @@ Resources:
                   }
                 ],
                 "alert_on_pickup": false,
-                "alert_on_delivery": true
+                "alert_on_shipping": true
               }
       Policies:
         - LambdaInvokePolicy:
@@ -91,6 +92,8 @@ Resources:
             TableName: !Ref ResultsTable
         - SNSPublishMessagePolicy:
             TopicName: !GetAtt ProductAlertTopic.TopicName
+        - SNSPublishMessagePolicy:
+            TopicName: !GetAtt ProductShippingAlertTopic.TopicName
       Tracing:
         Enabled: true
       Type: EXPRESS
@@ -199,6 +202,19 @@ Resources:
     Properties:
       DisplayName: Target Product Available
       TopicName: !Sub '${AWS::StackName}-product-alert'
+      Subscription:
+        - Endpoint: '{{resolve:ssm:TargetTrackerEmail1:1}}'
+          Protocol: email
+        - Endpoint: '{{resolve:ssm:TargetTrackerEmail2:1}}'
+          Protocol: email
+      Tags:
+        - Key: Project
+          Value: !Ref 'AWS::StackName'
+  ProductShippingAlertTopic:
+    Type: AWS::SNS::Topic
+    Properties:
+      DisplayName: Target Product Available for Shipping
+      TopicName: !Sub '${AWS::StackName}-product-shipping-alert'
       Subscription:
         - Endpoint: '{{resolve:ssm:TargetTrackerEmail1:1}}'
           Protocol: email
@@ -328,6 +344,9 @@ Outputs:
   ProductAlertTopicArn:
     Description: "Product Alert SNS Topic ARN"
     Value: !Ref ProductAlertTopic
+  ProductShippingAlertTopicArn:
+    Description: "Product Shipping Alert SNS Topic ARN"
+    Value: !Ref ProductShippingAlertTopic
   ResultsTableArn:
     Description: "Results Table ARN"
     Value: !GetAtt ResultsTable.Arn

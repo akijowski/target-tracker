@@ -2,6 +2,7 @@ version = 0.1
 [stage]
 [stage.deploy]
 [stage.deploy.parameters]
+cached = true
 stack_name = "target-tracker-stage"
 s3_bucket = "aws-sam-cli-managed-default-samclisourcebucket-19frygaby8sgu"
 s3_prefix = "target-tracker-stage"
