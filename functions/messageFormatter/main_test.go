@@ -148,11 +148,27 @@ func TestHandler_Shipping(t *testing.T) {
 							},
 						},
 					},
+					{
+						ProductQuery: schema.ProductQuery{
+							Name:            "other formula",
+							DesiredQuantity: 1,
+							ProductURL:      "url-to-other-formula",
+						},
+						Result: schema.ProductResult{
+							Shipping: schema.ShippingResult{
+								AvailableToPromise: 3,
+								IsAvailable:        true,
+							},
+						},
+					},
 				},
 			},
 			expected: MessageResult{Shipping: `Product Alert!
 special formula is available for online order.  1 available:
 url-to-formula
+other formula is available for online order.  3 available:
+url-to-other-formula
+
 `},
 		},
 	}

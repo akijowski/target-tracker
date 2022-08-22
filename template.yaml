@@ -70,12 +70,6 @@ Resources:
                     "tcin": "70000046",
                     "desired_quantity": 1,
                     "product_url": "https://www.target.com/p/sensitivity-non-gmo-powder-infant-formula-up-up/-/A-82052068"
-                  },
-                  {
-                    "name": "Enfamil NeuroPro Gentlease",
-                    "tcin": "79334027",
-                    "desired_quantity": 1,
-                    "product_url": "https://www.target.com/p/enfamil-neuropro-gentlease-non-gmo-powder-infant-formula/-/A-81640508"
                   }
                 ],
                 "alert_on_pickup": false,

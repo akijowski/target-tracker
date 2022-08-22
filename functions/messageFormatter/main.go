@@ -50,7 +50,7 @@ Product Alert!
 {{ range . -}}
 {{ .Name }} is available for online order.  {{ .Result.Shipping.AvailableToPromise }} available:
 {{ .ProductURL }}
-{{- end }}
+{{ end }}
 {{ end -}}
 `
 
