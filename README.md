@@ -1,5 +1,7 @@
 # Target Tracker Serverless Application
 
+This project is now archived!  It was a successful experiment, but now I no longer need to run this application.
+
 With the shortage of baby formula, I decided to experiment with a serverless application
 that will periodically check Target for product and give me an email alert.
 

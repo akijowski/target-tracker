@@ -73,7 +73,7 @@ Resources:
                   }
                 ],
                 "alert_on_pickup": false,
-                "alert_on_shipping": true
+                "alert_on_shipping": false
               }
       Policies:
         - LambdaInvokePolicy:
